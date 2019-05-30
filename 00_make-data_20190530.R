@@ -1,6 +1,7 @@
 # Create dataset for LR course
 
 library(tidyverse)
+library(here)
 library(boot) # for logit functions
 
 set.seed(4815)
@@ -53,3 +54,6 @@ glm(status == "diseased" ~ age + sex + treatment, data = dat, family = "binomial
 
 dat <- dat %>% 
   select(-logit_p_disease, -p_disease)
+
+
+write_csv(dat, here("logreg_course", "logreg_data_01_20190530.csv"))
