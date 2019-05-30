@@ -5,7 +5,7 @@ library(boot) # for logit functions
 
 set.seed(4815)
 
-N <- 2000
+N <- 1000
 days_in_month <- 30
 
 # make some data
@@ -23,20 +23,20 @@ dat <- tibble(ID = paste("A", str_pad(1:N, 4, "left", 0)),
                 (region == "C") * 0.2 +
                 rnorm(N, 0, 1),
               logit_p_disease = -2 +
-                (treatment == "treated") * 0.4 +
+                (treatment == "treated") * -0.4 +
                 (sex == "male") * 0.2 +
                 age * 0.005,
               p_disease = inv.logit(logit_p_disease),
               status = c("healthy", "diseased")[rbernoulli(N, p_disease) + 1]) %>% 
   mutate(age = round(age),
          weight = round(weight, 1)) %>% 
-  mutate(treatment = if_else(sex == "male" & runif(N) > 0.50, "treated", treatment))
+  mutate(treatment = if_else(sex == "male" & runif(N) > 0.80, "treated", treatment))
 
 
-ggplot(dat) +
-  aes(x = age, y = weight, colour = sex) +
-  geom_point() +
-  geom_smooth(method = "lm", se = FALSE)
+# ggplot(dat) +
+#   aes(x = age, y = weight, colour = sex) +
+#   geom_point() +
+#   geom_smooth(method = "lm", se = FALSE)
 
 dat %>% 
   count(sex, treatment) %>% 
@@ -50,3 +50,6 @@ fisher.test(dat$status == "diseased", dat$sex)
 
 glm(status == "diseased" ~ age + sex + treatment, data = dat, family = "binomial") %>% 
   summary()
+
+dat <- dat %>% 
+  select(-logit_p_disease, -p_disease)
