@@ -154,9 +154,10 @@ ggplot(dat) +
        x = "Age (months)",
        y = "Weight (Kg)",
        colour = "Sex")
+```
 
+```{r, include = FALSE}
 ggsave(here("figures", "lin_regression_plot.png"))
-
 ```
 ]
 ---
