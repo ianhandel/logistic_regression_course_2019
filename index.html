@@ -53,6 +53,10 @@ class: center, middle, inverse, title-slide
   width: 100%;
   border: 1px solid #EEEEEE;
 }
+
+code.r.hljs.remark-code{
+  background-color: #E0E0E0;
+}
 &lt;/style&gt;
 
 
@@ -170,22 +174,271 @@ lm(formula = weight ~ age + sex, data = dat)
 
 Residuals:
    Min     1Q Median     3Q    Max 
- -3.40  -0.76   0.02   0.78   3.58 
+-3.025 -0.704  0.003  0.779  2.443 
 
 Coefficients:
             Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)  44.0283     0.4483      98   &lt;2e-16 ***
-age           0.1784     0.0021      84   &lt;2e-16 ***
-sexmale      11.2197     0.0734     153   &lt;2e-16 ***
+(Intercept)  43.9666     0.8070      54   &lt;2e-16 ***
+age           0.1796     0.0039      46   &lt;2e-16 ***
+sexmale      11.0297     0.1384      80   &lt;2e-16 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 1.2 on 997 degrees of freedom
+Residual standard error: 1.1 on 247 degrees of freedom
 Multiple R-squared:  0.97,	Adjusted R-squared:  0.97 
-F-statistic: 1.5e+04 on 2 and 997 DF,  p-value: &lt;2e-16
+F-statistic: 4.5e+03 on 2 and 247 DF,  p-value: &lt;2e-16
 ```
 
 ---
+
+# Analysing binary data
+
+### Binary data common in epidemiology e.g.
+
+- alive/dead
+- healthy/diseased
+
+
+&lt;table&gt;
+&lt;caption&gt;Example data&lt;/caption&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; ID &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; treatment &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; age &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; region &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; sex &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; weight &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; status &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; A0049 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; control &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 226 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; C &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; female &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 84.8 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; healthy &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; A0229 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; treated &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 231 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; A &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; male &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 96.0 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; healthy &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; A0065 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; treated &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 211 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; A &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; male &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 92.5 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; diseased &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; A0153 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; treated &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 189 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; C &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; male &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 87.3 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; healthy &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; A0074 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; treated &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 214 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; C &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; male &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 93.4 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; diseased &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; A0228 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; control &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 226 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; D &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; male &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 96.7 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; diseased &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+
+# Univariable analysis
+
+__Status vs treatment__
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; treatment &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; diseased &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; healthy &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; control &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 12 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 94 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; treated &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 11 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 133 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+```r
+with(dat,
+*     fisher.test(status, treatment))
+```
+
+```
+
+	Fisher's Exact Test for Count Data
+
+data:  status and treatment
+p-value = 0.3781
+alternative hypothesis: true odds ratio is not equal to 1
+95 percent confidence interval:
+ 0.5941535 4.0350271
+sample estimates:
+odds ratio 
+  1.540753 
+```
+
+---
+
+# Multivariable analysis
+
+How about recoding the outcome as 0/1?
+
+&lt;table&gt;
+&lt;caption&gt;Example data&lt;/caption&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; ID &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; treatment &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; age &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; region &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; sex &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; weight &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; status &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; status01 &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; A0049 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; control &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 226 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; C &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; female &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 84.8 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; healthy &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; A0229 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; treated &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 231 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; A &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; male &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 96.0 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; healthy &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; A0065 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; treated &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 211 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; A &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; male &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 92.5 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; diseased &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; A0153 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; treated &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 189 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; C &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; male &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 87.3 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; healthy &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; A0074 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; treated &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 214 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; C &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; male &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 93.4 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; diseased &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; A0228 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; control &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 226 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; D &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; male &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 96.7 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; diseased &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+Then use linear regression...
+
+---
+
+# Linear regression 1
+
+![](01_slides_20190601_files/figure-html/unnamed-chunk-10-1.svg)&lt;!-- --&gt;
+
+---
+
+# Linear regression 2
+
+![](01_slides_20190601_files/figure-html/unnamed-chunk-11-1.svg)&lt;!-- --&gt;
+
+--
+
+### Problems
+
+--
+
+-predicts (impossible) intermediate values
+
+--
+
+-can predict &lt;0 and &gt;1
+
+---
+
+
+
+
+
+
+
+
+
+
 
 
 # Hello Ninja
@@ -290,7 +543,7 @@ Some differences between using remark.js (left) and using **xaringan** (right):
 You can write LaTeX math expressions inside a pair of dollar signs, e.g. &amp;#36;\alpha+\beta$ renders `\(\alpha+\beta\)`. You can use the display style with double dollar signs:
 
 ```
-$$\bar{X}=\frac{1}{n}\sum_{i=1}^nX_i$$
+`$$\bar{X}=\frac{1}{n}\sum_{i=1}^nX_i$$`
 ```
 
 `$$\bar{X}=\frac{1}{n}\sum_{i=1}^nX_i$$`
@@ -429,8 +682,8 @@ DT::datatable(
 )
 ```
 
-<div id="htmlwidget-2bcfc03338dc021d3086" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-2bcfc03338dc021d3086">{"x":{"filter":"none","fillContainer":false,"data":[["1","2","3","4","5","6","7","8","9","10"],[5.1,4.9,4.7,4.6,5,5.4,4.6,5,4.4,4.9],[3.5,3,3.2,3.1,3.6,3.9,3.4,3.4,2.9,3.1],[1.4,1.4,1.3,1.5,1.4,1.7,1.4,1.5,1.4,1.5],[0.2,0.2,0.2,0.2,0.2,0.4,0.3,0.2,0.2,0.1],["setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Sepal.Length<\/th>\n      <th>Sepal.Width<\/th>\n      <th>Petal.Length<\/th>\n      <th>Petal.Width<\/th>\n      <th>Species<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":8,"columnDefs":[{"className":"dt-right","targets":[1,2,3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[8,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-9179307f2e17466358a4" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-9179307f2e17466358a4">{"x":{"filter":"none","fillContainer":false,"data":[["1","2","3","4","5","6","7","8","9","10"],[5.1,4.9,4.7,4.6,5,5.4,4.6,5,4.4,4.9],[3.5,3,3.2,3.1,3.6,3.9,3.4,3.4,2.9,3.1],[1.4,1.4,1.3,1.5,1.4,1.7,1.4,1.5,1.4,1.5],[0.2,0.2,0.2,0.2,0.2,0.4,0.3,0.2,0.2,0.1],["setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Sepal.Length<\/th>\n      <th>Sepal.Width<\/th>\n      <th>Petal.Length<\/th>\n      <th>Petal.Width<\/th>\n      <th>Species<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":8,"columnDefs":[{"className":"dt-right","targets":[1,2,3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[8,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
 
 ---
 
@@ -823,6 +1076,9 @@ class: center, middle
 Slides created via the R package [**xaringan**](https://github.com/yihui/xaringan).
 
 The chakra comes from [remark.js](https://remarkjs.com), [**knitr**](http://yihui.name/knitr), and [R Markdown](https://rmarkdown.rstudio.com).
+
+
+```
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
