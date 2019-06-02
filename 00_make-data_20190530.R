@@ -6,13 +6,13 @@ library(boot) # for logit functions
 
 set.seed(4815)
 
-N <- 1000
+N <- 250
 days_in_month <- 30
 
 # make some data
 # males are more likely to be treated
 
-dat <- tibble(ID = paste("A", str_pad(1:N, 4, "left", 0)),
+dat <- tibble(ID = paste0("A", str_pad(1:N, 4, "left", 0)),
               treatment = sample(c("treated", "control"), N, TRUE),
               age = runif(N, 6 * days_in_month, 8 * days_in_month),
               region = sample(LETTERS[1:4], N, TRUE),
@@ -24,9 +24,9 @@ dat <- tibble(ID = paste("A", str_pad(1:N, 4, "left", 0)),
                 (region == "C") * 0.2 +
                 rnorm(N, 0, 1),
               logit_p_disease = -2 +
-                (treatment == "treated") * -0.4 +
-                (sex == "male") * 0.2 +
-                age * 0.005,
+                (treatment == "treated") * -1.2 +
+                (sex == "male") * 0.5 +
+                (age - 220) * 0.05,
               p_disease = inv.logit(logit_p_disease),
               status = c("healthy", "diseased")[rbernoulli(N, p_disease) + 1]) %>% 
   mutate(age = round(age),
