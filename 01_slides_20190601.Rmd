@@ -37,12 +37,18 @@ output:
   width: 100%;
   border: 1px solid #EEEEEE;
 }
+
+code.r.hljs.remark-code{
+  background-color: #E0E0E0;
+}
 ```
 
 ```{r, include= FALSE}
 library(tidyverse)
 library(here)
 library(knitr)
+
+set.seed(42)
 
 opts_chunk$set(comment = "")
 
@@ -151,7 +157,7 @@ ggplot(dat) +
   theme_bw(base_size = 22) +
   labs(title = "Weight vs Age of the animals",
        subtitle = "They get bigger as they age\nand males are heavier",
-       x = "Age (months)",
+       x = "Age (days)",
        y = "Weight (Kg)",
        colour = "Sex")
 ```
@@ -173,6 +179,107 @@ print(summary(mod1), digits = 2)
 ```
 
 ---
+
+# Analysing binary data
+
+### Binary data common in epidemiology e.g.
+
+- alive/dead
+- healthy/diseased
+
+
+```{r, echo = FALSE}
+dat %>% 
+  sample_n(6) %>% 
+  kable(format = "html", caption = "Example data")
+```
+
+---
+
+# Univariable analysis
+
+__Status vs treatment__
+
+```{r, echo = FALSE}
+dat %>% 
+  count(treatment, status) %>% 
+  spread(status, n) %>% 
+  kable(format = "html")
+```
+
+```{r}
+with(dat,
+     {{fisher.test(status, treatment)}})
+```
+
+---
+
+# Multivariable analysis
+
+How about recoding the outcome as 0/1?
+
+```{r, echo = FALSE}
+set.seed(42)
+dat <- dat %>%
+  mutate(status01 = as.numeric(factor(status, levels = c("healthy", "diseased"))) - 1)
+
+dat %>% 
+  sample_n(6) %>% 
+  kable(format = "html", caption = "Example data")
+```
+
+Then use linear regression...
+
+---
+
+# Linear regression 1
+
+```{r, echo = FALSE, dev = 'svg', fig.height=4}
+ggplot(dat) +
+  aes(age, status01, colour = treatment) +
+  geom_point(shape = 1) +
+  theme_bw(base_size = 16) +
+  scale_y_continuous(limits = c(-0.2, 1.0), breaks = c(0,0.5,1)) +
+  labs(title = "Status vs Age and treatment",
+       x = "Age (days)",
+       y = "Outcome",
+       colour = "Treatment")
+
+```
+
+---
+
+# Linear regression 2
+
+```{r, echo = FALSE, dev = 'svg', fig.height=4}
+last_plot() +
+  geom_smooth(method = "lm", se = FALSE, lwd = 0.5)
+```
+
+--
+
+### Problems
+
+--
+
+-predicts (impossible) intermediate values
+
+--
+
+-can predict <0 and >1
+
+---
+
+
+
+
+
+
+
+
+
+
+
 
 
 # Hello Ninja

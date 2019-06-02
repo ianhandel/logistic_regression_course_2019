@@ -1,1001 +1,251 @@
 ID,treatment,age,region,sex,weight,status
-A 0001,treated,182,B,male,86.3,diseased
-A 0002,treated,193,B,male,89.6,healthy
-A 0003,control,233,D,female,84.5,healthy
-A 0004,control,240,B,female,84.1,diseased
-A 0005,treated,232,B,male,99.3,healthy
-A 0006,treated,236,D,female,85.6,healthy
-A 0007,control,235,D,male,95.9,diseased
-A 0008,treated,219,D,male,95,healthy
-A 0009,treated,204,B,male,90.6,healthy
-A 0010,treated,221,D,male,95.2,diseased
-A 0011,treated,234,A,female,85.1,healthy
-A 0012,treated,194,B,female,78.8,healthy
-A 0013,treated,193,C,male,89.2,healthy
-A 0014,treated,232,B,male,97.1,healthy
-A 0015,control,238,A,female,85.9,healthy
-A 0016,treated,220,C,male,94.8,healthy
-A 0017,treated,232,B,male,96.3,healthy
-A 0018,treated,184,B,male,87.2,healthy
-A 0019,treated,232,C,male,97.1,diseased
-A 0020,control,198,C,male,89.7,healthy
-A 0021,control,209,B,male,92.9,diseased
-A 0022,treated,203,D,male,91.1,healthy
-A 0023,control,205,A,female,80.2,healthy
-A 0024,control,231,D,male,98.5,diseased
-A 0025,treated,209,B,female,80,healthy
-A 0026,control,224,D,female,82.8,diseased
-A 0027,control,220,D,male,94.9,diseased
-A 0028,control,186,A,female,77.7,healthy
-A 0029,control,213,C,female,80.4,diseased
-A 0030,treated,206,C,female,82.4,healthy
-A 0031,treated,200,C,male,91.2,healthy
-A 0032,control,239,B,male,97.1,healthy
-A 0033,control,184,A,male,88.1,diseased
-A 0034,treated,182,D,male,87.4,healthy
-A 0035,control,209,C,female,82.5,healthy
-A 0036,control,240,B,female,83.9,healthy
-A 0037,treated,199,B,male,90.1,healthy
-A 0038,control,238,A,female,85.5,healthy
-A 0039,treated,236,A,male,98,diseased
-A 0040,treated,223,C,female,83.5,healthy
-A 0041,control,210,C,male,92.1,healthy
-A 0042,treated,198,B,male,92,healthy
-A 0043,treated,190,B,male,89,healthy
-A 0044,control,202,B,female,79.2,healthy
-A 0045,control,234,A,female,83,diseased
-A 0046,treated,223,D,male,95.9,healthy
-A 0047,control,212,A,male,94.7,healthy
-A 0048,treated,185,B,male,87.6,healthy
-A 0049,control,227,A,female,84.2,healthy
-A 0050,control,240,D,male,98.4,diseased
-A 0051,treated,203,C,male,92,healthy
-A 0052,treated,226,A,female,83.5,healthy
-A 0053,treated,209,C,male,92.8,healthy
-A 0054,treated,214,A,male,94.8,healthy
-A 0055,control,218,A,female,81.3,healthy
-A 0056,control,207,A,male,90.3,healthy
-A 0057,treated,213,C,male,93,healthy
-A 0058,treated,222,D,male,96,healthy
-A 0059,control,217,A,female,83.3,healthy
-A 0060,control,236,C,female,87.4,healthy
-A 0061,control,225,C,female,83.2,healthy
-A 0062,control,207,D,male,92.3,diseased
-A 0063,treated,210,D,female,81.1,healthy
-A 0064,treated,238,A,male,99.7,healthy
-A 0065,treated,218,D,male,92.8,healthy
-A 0066,control,229,D,female,86.3,healthy
-A 0067,treated,229,B,female,82.3,diseased
-A 0068,treated,208,A,male,93.5,diseased
-A 0069,treated,225,D,female,83.2,healthy
-A 0070,treated,235,C,male,98.3,diseased
-A 0071,treated,220,D,female,83.3,diseased
-A 0072,treated,198,D,male,91.6,diseased
-A 0073,treated,204,A,male,90.8,diseased
-A 0074,treated,209,C,female,80.3,healthy
-A 0075,treated,197,A,male,89.1,healthy
-A 0076,control,183,A,female,76.8,healthy
-A 0077,treated,217,B,female,80.8,healthy
-A 0078,treated,191,A,female,77.6,healthy
-A 0079,treated,184,C,female,77.2,healthy
-A 0080,control,229,A,female,84.6,healthy
-A 0081,treated,225,A,male,96.9,healthy
-A 0082,treated,232,D,female,84.7,healthy
-A 0083,treated,231,D,male,95.3,healthy
-A 0084,treated,211,D,male,92.2,diseased
-A 0085,treated,196,D,male,90.7,healthy
-A 0086,control,207,B,male,91,healthy
-A 0087,treated,187,B,female,79.1,diseased
-A 0088,treated,206,A,female,82.1,healthy
-A 0089,control,183,C,female,78.4,healthy
-A 0090,control,226,D,female,83.2,healthy
-A 0091,control,191,C,female,79.1,healthy
-A 0092,treated,233,A,male,98.5,healthy
-A 0093,control,191,D,female,78.9,healthy
-A 0094,treated,187,A,male,87.2,healthy
-A 0095,control,214,D,female,81.9,diseased
-A 0096,control,190,D,female,77.6,healthy
-A 0097,control,226,C,female,82.1,healthy
-A 0098,treated,181,C,male,85.1,diseased
-A 0099,control,186,C,female,78.5,healthy
-A 0100,treated,240,C,male,98.6,healthy
-A 0101,treated,200,A,male,89.8,diseased
-A 0102,control,191,D,female,79.5,healthy
-A 0103,control,211,C,male,93.8,healthy
-A 0104,treated,227,B,female,82.9,healthy
-A 0105,control,211,C,male,91.6,healthy
-A 0106,treated,184,B,male,88.1,diseased
-A 0107,control,239,D,female,86.4,healthy
-A 0108,treated,232,D,male,97.1,diseased
-A 0109,treated,223,C,male,95.2,healthy
-A 0110,treated,192,A,male,89.4,healthy
-A 0111,control,238,A,male,97.8,healthy
-A 0112,treated,192,B,male,88,diseased
-A 0113,treated,229,D,female,84.9,diseased
-A 0114,control,202,D,female,81.6,healthy
-A 0115,control,187,A,male,86.5,healthy
-A 0116,control,204,D,male,91.1,healthy
-A 0117,control,194,C,male,87.6,healthy
-A 0118,treated,222,B,male,95,healthy
-A 0119,control,227,C,male,97.3,healthy
-A 0120,treated,227,B,male,98.7,diseased
-A 0121,treated,189,A,male,89.8,diseased
-A 0122,treated,207,A,female,80.6,diseased
-A 0123,treated,181,D,female,75.7,healthy
-A 0124,treated,230,D,female,85.7,diseased
-A 0125,treated,185,B,male,87.4,healthy
-A 0126,treated,208,D,female,82.5,healthy
-A 0127,treated,222,C,male,93.8,healthy
-A 0128,treated,207,C,female,81.4,healthy
-A 0129,control,198,A,female,80.5,healthy
-A 0130,control,236,B,female,85.3,diseased
-A 0131,treated,206,D,male,91.7,diseased
-A 0132,treated,227,A,male,96.9,healthy
-A 0133,treated,228,D,female,85.1,healthy
-A 0134,control,214,A,female,80.7,healthy
-A 0135,treated,186,A,female,78.5,healthy
-A 0136,treated,230,D,female,84.2,diseased
-A 0137,control,217,A,female,83.6,diseased
-A 0138,control,189,B,male,89.4,healthy
-A 0139,control,230,A,female,85.3,healthy
-A 0140,treated,222,D,male,94.6,healthy
-A 0141,treated,193,D,male,90.2,diseased
-A 0142,treated,209,B,male,92.5,diseased
-A 0143,treated,207,D,female,80.9,healthy
-A 0144,treated,206,A,female,80.7,healthy
-A 0145,treated,203,B,female,77.7,healthy
-A 0146,treated,205,B,female,79.3,healthy
-A 0147,treated,205,B,female,82.1,healthy
-A 0148,control,217,B,female,82.5,healthy
-A 0149,treated,192,A,female,80.5,healthy
-A 0150,control,230,C,female,83.8,healthy
-A 0151,control,227,C,male,95.7,healthy
-A 0152,control,233,B,male,97.6,healthy
-A 0153,treated,195,B,female,78.6,healthy
-A 0154,control,232,C,female,83.9,healthy
-A 0155,treated,231,B,male,98,healthy
-A 0156,treated,198,D,female,79.6,healthy
-A 0157,control,205,A,female,80.1,healthy
-A 0158,control,199,C,female,79.1,diseased
-A 0159,treated,212,D,female,81.2,diseased
-A 0160,treated,184,D,female,76,healthy
-A 0161,treated,220,A,male,96.3,healthy
-A 0162,treated,217,C,male,93.8,diseased
-A 0163,control,195,B,female,80.6,healthy
-A 0164,treated,185,B,female,76.9,diseased
-A 0165,treated,235,B,male,99.5,healthy
-A 0166,treated,229,B,female,81.8,healthy
-A 0167,treated,214,A,female,80.9,healthy
-A 0168,control,196,A,male,90.5,healthy
-A 0169,treated,204,C,female,79.3,healthy
-A 0170,treated,231,A,male,97.2,healthy
-A 0171,treated,205,C,male,92,healthy
-A 0172,control,231,B,female,83.1,healthy
-A 0173,treated,210,C,male,92.7,healthy
-A 0174,control,212,B,female,80.8,healthy
-A 0175,treated,228,A,male,94.5,healthy
-A 0176,treated,192,C,female,78.3,healthy
-A 0177,control,215,A,female,83.1,diseased
-A 0178,control,196,C,male,89.5,healthy
-A 0179,control,217,D,female,83.7,healthy
-A 0180,control,190,B,female,77.8,healthy
-A 0181,treated,188,B,male,87.1,healthy
-A 0182,treated,231,B,female,84.4,healthy
-A 0183,control,190,D,female,76.6,healthy
-A 0184,treated,190,C,male,90.2,diseased
-A 0185,control,239,B,male,98.7,diseased
-A 0186,treated,182,B,female,76,healthy
-A 0187,control,209,B,male,90.6,healthy
-A 0188,treated,190,A,female,78.1,healthy
-A 0189,control,193,D,male,90.1,diseased
-A 0190,control,205,C,male,95.2,healthy
-A 0191,control,231,B,male,94.9,diseased
-A 0192,control,216,D,female,83.4,healthy
-A 0193,treated,213,B,male,94.7,healthy
-A 0194,treated,186,D,male,88.2,diseased
-A 0195,treated,238,C,male,97.1,diseased
-A 0196,treated,192,B,male,88,healthy
-A 0197,treated,232,B,male,96.4,healthy
-A 0198,treated,216,B,male,93.3,healthy
-A 0199,treated,187,C,male,87.9,diseased
-A 0200,treated,233,D,female,84.4,healthy
-A 0201,treated,202,D,female,80,healthy
-A 0202,treated,193,B,male,87.1,healthy
-A 0203,control,203,D,female,79,healthy
-A 0204,control,233,D,female,85.3,healthy
-A 0205,treated,183,D,female,74.6,healthy
-A 0206,control,214,B,female,81.8,diseased
-A 0207,treated,191,C,female,78.2,healthy
-A 0208,control,211,B,female,82.6,healthy
-A 0209,control,187,B,female,76.1,healthy
-A 0210,control,183,D,male,85.5,healthy
-A 0211,control,199,A,female,80.1,healthy
-A 0212,treated,237,C,female,87.1,diseased
-A 0213,control,236,C,male,98,healthy
-A 0214,control,208,D,male,91.6,healthy
-A 0215,treated,232,A,male,97.1,healthy
-A 0216,control,223,C,male,95.8,healthy
-A 0217,control,180,D,female,77,healthy
-A 0218,control,229,B,male,95.7,diseased
-A 0219,control,230,B,female,83.3,diseased
-A 0220,control,200,D,female,78.7,healthy
-A 0221,control,213,A,female,82.2,healthy
-A 0222,control,234,D,male,97.3,healthy
-A 0223,treated,200,B,male,91.3,healthy
-A 0224,control,236,B,male,98,healthy
-A 0225,treated,195,A,male,89.7,diseased
-A 0226,control,206,C,male,91.3,healthy
-A 0227,control,232,D,female,84.8,diseased
-A 0228,control,189,D,male,89.2,healthy
-A 0229,control,209,D,female,79.5,healthy
-A 0230,treated,217,C,male,93.2,diseased
-A 0231,control,228,A,female,83.9,diseased
-A 0232,control,229,A,female,85,healthy
-A 0233,control,192,B,female,79.2,healthy
-A 0234,control,218,D,female,83.1,healthy
-A 0235,control,194,B,male,89.4,healthy
-A 0236,treated,216,A,male,96.4,healthy
-A 0237,treated,189,B,female,77.6,healthy
-A 0238,treated,205,A,male,90.5,healthy
-A 0239,treated,196,D,male,89.2,healthy
-A 0240,treated,214,A,male,93.7,healthy
-A 0241,control,226,D,male,95.5,diseased
-A 0242,treated,189,B,male,89,healthy
-A 0243,treated,227,B,male,96.4,healthy
-A 0244,control,190,C,male,90,healthy
-A 0245,treated,209,D,female,82.5,diseased
-A 0246,control,193,B,female,79,healthy
-A 0247,treated,231,A,male,96.2,diseased
-A 0248,treated,198,D,male,91,healthy
-A 0249,treated,203,A,male,92.3,healthy
-A 0250,treated,196,B,female,80.7,healthy
-A 0251,control,222,A,male,95.6,diseased
-A 0252,control,215,A,male,94.2,healthy
-A 0253,treated,236,A,female,87.1,diseased
-A 0254,treated,186,C,female,77.3,diseased
-A 0255,control,189,D,male,87.6,diseased
-A 0256,treated,202,B,male,89.9,diseased
-A 0257,treated,206,D,female,81.4,healthy
-A 0258,control,183,B,male,85.5,diseased
-A 0259,treated,221,B,female,81.7,healthy
-A 0260,treated,217,D,female,82.3,healthy
-A 0261,treated,225,D,female,83.6,healthy
-A 0262,control,188,A,female,77.9,healthy
-A 0263,control,222,B,female,82.9,healthy
-A 0264,treated,182,B,male,87.9,healthy
-A 0265,treated,231,A,female,85.8,healthy
-A 0266,treated,235,A,female,86,healthy
-A 0267,treated,202,C,female,80.1,healthy
-A 0268,treated,196,A,female,79.6,healthy
-A 0269,treated,203,C,male,91.1,diseased
-A 0270,treated,230,C,male,98.3,healthy
-A 0271,control,211,B,male,94.3,healthy
-A 0272,treated,195,B,male,90.4,healthy
-A 0273,control,231,A,male,97.7,diseased
-A 0274,treated,182,A,male,86.4,healthy
-A 0275,control,186,C,female,77.8,healthy
-A 0276,treated,182,A,male,87.5,healthy
-A 0277,treated,203,A,male,90.9,healthy
-A 0278,treated,200,B,male,90.4,healthy
-A 0279,treated,228,B,female,85,healthy
-A 0280,treated,181,B,male,85.1,healthy
-A 0281,treated,225,A,male,95.1,healthy
-A 0282,treated,234,D,female,86,healthy
-A 0283,control,222,B,male,94.4,diseased
-A 0284,treated,212,C,female,81.6,diseased
-A 0285,control,209,B,male,93.2,healthy
-A 0286,treated,233,B,female,83.8,healthy
-A 0287,control,191,C,male,89.2,healthy
-A 0288,treated,222,A,male,94.6,healthy
-A 0289,treated,233,B,male,95.4,healthy
-A 0290,treated,228,C,male,95.5,healthy
-A 0291,control,221,D,female,81.6,healthy
-A 0292,treated,239,D,male,99.3,healthy
-A 0293,control,206,C,female,81.3,diseased
-A 0294,treated,215,B,female,80.7,healthy
-A 0295,treated,221,B,male,94.6,healthy
-A 0296,treated,216,C,male,94.8,healthy
-A 0297,treated,208,D,female,81.4,healthy
-A 0298,treated,229,D,female,85.1,healthy
-A 0299,control,186,D,male,87.6,healthy
-A 0300,treated,214,A,male,93.2,healthy
-A 0301,control,231,C,female,86,healthy
-A 0302,control,218,A,male,96.1,diseased
-A 0303,control,221,C,female,83.4,healthy
-A 0304,control,210,C,male,93.4,healthy
-A 0305,treated,185,D,female,78.7,healthy
-A 0306,treated,209,D,male,91.6,diseased
-A 0307,control,220,B,female,82.1,diseased
-A 0308,control,217,C,female,81.7,healthy
-A 0309,treated,196,B,female,79.2,healthy
-A 0310,control,223,C,female,82.3,healthy
-A 0311,treated,231,A,male,96.9,diseased
-A 0312,treated,232,B,female,84.5,healthy
-A 0313,treated,204,A,male,91.4,diseased
-A 0314,treated,235,C,male,99.2,healthy
-A 0315,control,235,A,female,85.6,healthy
-A 0316,treated,227,C,female,84,healthy
-A 0317,treated,223,D,male,95.6,healthy
-A 0318,treated,195,D,female,78.5,healthy
-A 0319,control,203,A,male,90.1,diseased
-A 0320,control,198,C,female,80.1,healthy
-A 0321,treated,226,C,male,96,healthy
-A 0322,control,183,A,female,78.1,healthy
-A 0323,treated,185,D,male,86.8,healthy
-A 0324,control,216,D,male,94.6,healthy
-A 0325,treated,232,D,female,83.1,healthy
-A 0326,control,227,D,female,81.9,healthy
-A 0327,treated,217,C,male,94.1,diseased
-A 0328,treated,230,B,male,97.7,healthy
-A 0329,control,210,B,female,81.6,healthy
-A 0330,treated,212,C,male,92.9,healthy
-A 0331,control,211,C,female,81.5,diseased
-A 0332,treated,201,B,female,80.5,healthy
-A 0333,treated,188,D,male,89.1,healthy
-A 0334,control,213,D,female,81.7,healthy
-A 0335,control,219,B,female,80.8,healthy
-A 0336,control,213,C,female,82.3,healthy
-A 0337,treated,197,A,male,88.7,healthy
-A 0338,treated,197,C,female,78.9,healthy
-A 0339,treated,185,C,female,79.4,healthy
-A 0340,control,220,D,female,83.3,healthy
-A 0341,treated,235,D,female,87,diseased
-A 0342,control,237,B,male,99.1,healthy
-A 0343,treated,183,C,male,85.8,healthy
-A 0344,treated,190,A,female,78.9,healthy
-A 0345,treated,226,C,male,95.2,diseased
-A 0346,control,206,C,female,80.7,diseased
-A 0347,treated,224,D,female,84.2,healthy
-A 0348,treated,189,B,female,78.5,healthy
-A 0349,treated,223,C,male,93.8,healthy
-A 0350,control,210,B,male,92.3,healthy
-A 0351,treated,197,A,male,89.5,healthy
-A 0352,control,194,D,female,78.2,diseased
-A 0353,treated,226,B,female,85.3,healthy
-A 0354,control,233,A,female,84,healthy
-A 0355,control,206,B,female,80.2,healthy
-A 0356,control,181,D,female,77,healthy
-A 0357,treated,230,A,male,97,healthy
-A 0358,control,180,D,female,76.2,healthy
-A 0359,control,203,A,female,79.9,healthy
-A 0360,control,233,C,male,97.1,healthy
-A 0361,treated,191,D,male,89.1,healthy
-A 0362,treated,201,D,male,91.5,diseased
-A 0363,treated,186,C,female,77.7,healthy
-A 0364,treated,195,C,male,89.6,healthy
-A 0365,control,220,B,female,83.3,diseased
-A 0366,control,229,A,female,85,healthy
-A 0367,treated,184,A,male,88.9,healthy
-A 0368,control,226,C,female,84.1,diseased
-A 0369,control,189,B,female,77.8,diseased
-A 0370,treated,195,C,female,77.4,healthy
-A 0371,treated,207,D,male,93.3,healthy
-A 0372,treated,192,B,female,79.8,healthy
-A 0373,control,191,D,female,79.4,healthy
-A 0374,treated,182,B,male,86.1,healthy
-A 0375,treated,234,C,male,98.7,diseased
-A 0376,treated,223,A,male,96.4,healthy
-A 0377,control,210,D,male,93.2,healthy
-A 0378,control,213,A,female,80.6,healthy
-A 0379,treated,202,B,male,90,healthy
-A 0380,control,226,A,female,85.8,healthy
-A 0381,treated,207,D,female,82.7,healthy
-A 0382,treated,199,B,female,77.9,healthy
-A 0383,control,228,A,female,82.7,healthy
-A 0384,control,182,D,female,76.1,healthy
-A 0385,control,231,A,female,85.3,healthy
-A 0386,treated,195,A,male,90.3,healthy
-A 0387,treated,189,A,male,88.9,healthy
-A 0388,treated,190,C,female,80.8,diseased
-A 0389,control,227,B,male,96.6,diseased
-A 0390,treated,185,D,male,87.4,healthy
-A 0391,treated,235,D,male,98,healthy
-A 0392,treated,197,A,female,78.9,healthy
-A 0393,treated,188,A,female,79.5,healthy
-A 0394,treated,211,B,female,81.9,healthy
-A 0395,control,229,A,female,83.7,healthy
-A 0396,treated,224,B,female,81.6,healthy
-A 0397,control,234,A,female,85.1,healthy
-A 0398,treated,190,B,male,88.8,healthy
-A 0399,treated,220,D,male,95.3,healthy
-A 0400,treated,208,B,female,82.4,healthy
-A 0401,treated,198,A,male,91.7,healthy
-A 0402,treated,237,B,female,86.2,diseased
-A 0403,treated,237,C,female,85.4,healthy
-A 0404,control,208,C,male,92,diseased
-A 0405,treated,184,B,female,77.3,healthy
-A 0406,control,229,C,male,97.5,healthy
-A 0407,control,180,D,male,85.9,healthy
-A 0408,treated,223,C,female,84.2,diseased
-A 0409,treated,216,D,male,92.9,healthy
-A 0410,control,214,D,female,80.8,healthy
-A 0411,control,239,C,female,86.3,diseased
-A 0412,treated,184,A,male,85.9,diseased
-A 0413,treated,234,A,male,96,healthy
-A 0414,treated,210,A,male,93.8,healthy
-A 0415,treated,232,B,female,83.6,healthy
-A 0416,control,236,A,male,98.4,healthy
-A 0417,control,193,A,male,89.5,healthy
-A 0418,treated,209,C,female,80.2,healthy
-A 0419,control,235,B,male,97.2,diseased
-A 0420,treated,223,C,male,94.6,healthy
-A 0421,treated,203,D,male,92,healthy
-A 0422,control,210,C,female,81.8,healthy
-A 0423,treated,207,A,male,91.9,diseased
-A 0424,control,228,C,female,82.6,healthy
-A 0425,treated,238,D,female,85.4,healthy
-A 0426,treated,199,C,female,79,healthy
-A 0427,treated,180,B,male,88.5,healthy
-A 0428,treated,209,D,female,80.3,diseased
-A 0429,treated,201,C,female,78.3,healthy
-A 0430,control,204,B,female,79.8,healthy
-A 0431,control,188,C,male,88.7,healthy
-A 0432,treated,188,B,female,76.6,diseased
-A 0433,treated,226,D,female,87.3,healthy
-A 0434,control,195,D,female,79.4,healthy
-A 0435,treated,235,C,male,97.4,healthy
-A 0436,treated,196,A,female,79.9,healthy
-A 0437,treated,184,D,female,76.5,diseased
-A 0438,control,217,C,male,93.6,diseased
-A 0439,control,212,B,female,81.3,healthy
-A 0440,treated,190,B,female,77.2,healthy
-A 0441,treated,217,B,female,83.1,healthy
-A 0442,treated,190,B,male,88.7,healthy
-A 0443,treated,185,B,male,86.6,healthy
-A 0444,control,187,B,female,76.7,diseased
-A 0445,treated,190,B,male,87.3,healthy
-A 0446,treated,221,D,female,84.3,healthy
-A 0447,control,207,C,female,81.4,healthy
-A 0448,control,237,C,female,84.1,diseased
-A 0449,treated,192,A,female,80.1,diseased
-A 0450,control,220,C,female,84.1,diseased
-A 0451,treated,180,A,male,85.2,healthy
-A 0452,control,202,C,female,78.9,healthy
-A 0453,control,186,B,male,88.6,healthy
-A 0454,treated,206,C,male,93.2,healthy
-A 0455,treated,228,B,female,84,healthy
-A 0456,treated,186,D,male,86.2,healthy
-A 0457,treated,191,C,female,79.7,diseased
-A 0458,control,219,B,male,95.6,diseased
-A 0459,control,203,A,female,80.4,healthy
-A 0460,treated,217,A,male,94.6,healthy
-A 0461,treated,183,C,male,86.7,healthy
-A 0462,control,223,A,female,83.6,healthy
-A 0463,treated,230,D,female,82.6,diseased
-A 0464,treated,213,C,female,83.7,healthy
-A 0465,treated,187,D,female,79,diseased
-A 0466,treated,221,A,female,82.6,healthy
-A 0467,control,216,D,female,82.2,healthy
-A 0468,treated,225,C,male,94.3,diseased
-A 0469,control,183,A,female,76.5,healthy
-A 0470,control,220,A,male,95.5,healthy
-A 0471,treated,190,C,female,76.2,healthy
-A 0472,treated,209,A,female,81.8,healthy
-A 0473,treated,224,D,male,97.1,diseased
-A 0474,control,234,D,male,98.9,diseased
-A 0475,control,184,B,male,88.7,healthy
-A 0476,treated,184,D,female,77.1,healthy
-A 0477,treated,223,D,female,84.6,healthy
-A 0478,control,233,C,male,96,healthy
-A 0479,treated,198,D,male,92.4,diseased
-A 0480,treated,219,A,male,95.7,healthy
-A 0481,treated,213,A,female,81.5,healthy
-A 0482,control,215,A,female,81.2,healthy
-A 0483,treated,234,B,male,95.2,healthy
-A 0484,control,202,A,female,79.1,healthy
-A 0485,control,238,C,female,87.4,healthy
-A 0486,treated,217,A,female,80,healthy
-A 0487,treated,207,A,female,81.1,healthy
-A 0488,control,218,A,male,93.4,healthy
-A 0489,treated,216,C,female,83.5,diseased
-A 0490,control,225,C,female,83.6,healthy
-A 0491,treated,235,C,female,86.1,healthy
-A 0492,treated,191,C,female,79,healthy
-A 0493,treated,193,C,female,79.7,healthy
-A 0494,treated,227,B,female,84.7,healthy
-A 0495,control,206,D,male,90.4,diseased
-A 0496,treated,222,A,female,84.5,healthy
-A 0497,treated,192,C,male,89.8,healthy
-A 0498,control,188,B,female,79.7,healthy
-A 0499,treated,204,C,female,81.5,healthy
-A 0500,treated,200,C,female,80.2,healthy
-A 0501,control,220,A,male,95.9,healthy
-A 0502,control,228,D,female,84.2,healthy
-A 0503,control,214,B,male,94.3,healthy
-A 0504,treated,231,C,male,96,healthy
-A 0505,treated,223,B,female,82.5,healthy
-A 0506,treated,209,D,female,80.1,healthy
-A 0507,treated,218,C,female,83.1,healthy
-A 0508,treated,238,A,male,97.3,healthy
-A 0509,treated,225,B,female,83.3,healthy
-A 0510,control,190,C,female,77.7,healthy
-A 0511,control,216,A,female,81.7,healthy
-A 0512,treated,202,C,male,90.8,healthy
-A 0513,treated,191,A,male,86.8,healthy
-A 0514,treated,188,D,male,86.1,diseased
-A 0515,treated,223,D,female,84.2,healthy
-A 0516,control,239,C,female,86.1,healthy
-A 0517,control,220,A,female,82.8,healthy
-A 0518,treated,196,A,male,88.4,healthy
-A 0519,treated,185,A,female,75.4,diseased
-A 0520,treated,181,D,male,86,healthy
-A 0521,treated,219,B,female,81.5,healthy
-A 0522,treated,235,A,male,96.9,diseased
-A 0523,control,184,A,female,78.4,healthy
-A 0524,treated,217,A,female,83.6,healthy
-A 0525,treated,195,A,male,89.4,healthy
-A 0526,control,234,A,male,98.3,diseased
-A 0527,control,193,C,male,88.9,diseased
-A 0528,treated,195,D,female,78.8,healthy
-A 0529,treated,229,D,male,95.4,healthy
-A 0530,treated,235,D,female,86.4,healthy
-A 0531,control,226,A,female,84,healthy
-A 0532,control,238,C,female,86,healthy
-A 0533,control,217,C,female,82.9,healthy
-A 0534,treated,235,D,male,96.9,healthy
-A 0535,treated,198,C,male,90.3,healthy
-A 0536,control,231,A,male,95.5,healthy
-A 0537,treated,194,B,male,88.1,diseased
-A 0538,control,232,A,male,97.6,diseased
-A 0539,treated,184,A,male,87.3,healthy
-A 0540,treated,200,A,male,89.3,diseased
-A 0541,control,229,D,male,96.2,healthy
-A 0542,treated,209,A,female,82.1,healthy
-A 0543,control,222,C,female,83.8,diseased
-A 0544,treated,186,A,male,90.3,healthy
-A 0545,control,216,B,male,93.1,diseased
-A 0546,treated,228,B,female,84.1,diseased
-A 0547,treated,234,A,female,83,healthy
-A 0548,control,195,C,female,82.4,healthy
-A 0549,treated,227,C,female,83.7,healthy
-A 0550,control,203,C,female,78.6,healthy
-A 0551,control,214,D,male,94.7,healthy
-A 0552,treated,185,A,female,76.7,healthy
-A 0553,treated,225,B,male,96.1,diseased
-A 0554,control,206,C,female,81.8,healthy
-A 0555,treated,218,C,female,83.4,healthy
-A 0556,control,206,C,female,81.8,diseased
-A 0557,control,206,D,male,89.3,diseased
-A 0558,control,221,C,female,84.9,healthy
-A 0559,treated,186,A,female,77.1,healthy
-A 0560,control,195,D,female,80.2,healthy
-A 0561,treated,221,C,male,93.7,diseased
-A 0562,treated,213,B,male,93.8,healthy
-A 0563,treated,224,B,female,82.1,healthy
-A 0564,treated,207,B,female,80.5,healthy
-A 0565,treated,238,C,female,88.1,healthy
-A 0566,treated,222,D,male,94.7,healthy
-A 0567,treated,218,D,female,82.4,healthy
-A 0568,control,192,A,male,90,healthy
-A 0569,control,229,C,female,83.4,healthy
-A 0570,treated,233,A,male,97.9,healthy
-A 0571,treated,196,A,male,89.5,healthy
-A 0572,control,197,B,female,79.7,healthy
-A 0573,treated,186,C,female,77.9,healthy
-A 0574,treated,238,C,female,86.5,healthy
-A 0575,treated,196,D,male,91.7,healthy
-A 0576,treated,196,B,male,90.2,healthy
-A 0577,treated,190,A,female,77.7,healthy
-A 0578,control,221,B,female,83.5,healthy
-A 0579,treated,197,C,female,80.6,healthy
-A 0580,treated,212,C,female,83.4,diseased
-A 0581,treated,236,B,male,98.7,diseased
-A 0582,treated,218,B,female,84.6,diseased
-A 0583,control,223,C,female,84.1,healthy
-A 0584,treated,224,C,male,96.3,diseased
-A 0585,treated,189,C,female,77.6,diseased
-A 0586,control,234,C,male,97.5,healthy
-A 0587,control,207,B,female,81.1,healthy
-A 0588,control,215,D,male,92.8,healthy
-A 0589,treated,228,C,male,94.9,healthy
-A 0590,control,222,A,male,95.6,healthy
-A 0591,treated,215,C,male,94.3,healthy
-A 0592,treated,198,D,female,80.9,healthy
-A 0593,control,233,D,male,97.2,healthy
-A 0594,control,196,C,female,79.6,healthy
-A 0595,control,198,D,male,90.6,healthy
-A 0596,treated,215,A,male,94.6,healthy
-A 0597,control,192,D,female,77.5,healthy
-A 0598,control,217,B,male,93.5,healthy
-A 0599,treated,187,C,female,79.1,healthy
-A 0600,control,214,A,female,80.9,healthy
-A 0601,control,195,D,female,79.6,healthy
-A 0602,control,238,D,female,87.2,diseased
-A 0603,treated,227,D,female,83.7,diseased
-A 0604,treated,202,B,male,91.6,diseased
-A 0605,treated,213,C,male,91.5,healthy
-A 0606,control,208,A,female,79.2,diseased
-A 0607,control,236,A,female,86.3,diseased
-A 0608,treated,197,D,female,80.1,healthy
-A 0609,treated,197,C,male,92.3,healthy
-A 0610,control,238,C,female,87,healthy
-A 0611,control,182,C,male,86.9,diseased
-A 0612,treated,212,A,female,82,diseased
-A 0613,treated,236,A,male,99.8,diseased
-A 0614,treated,198,A,female,80.4,healthy
-A 0615,treated,190,D,female,77.5,healthy
-A 0616,treated,183,B,male,87.1,healthy
-A 0617,treated,218,C,male,95.4,healthy
-A 0618,control,200,B,female,79.3,healthy
-A 0619,treated,222,D,male,95.8,healthy
-A 0620,treated,231,D,female,86,healthy
-A 0621,control,234,B,female,85.7,healthy
-A 0622,treated,218,A,female,83.2,healthy
-A 0623,control,199,D,male,92.8,diseased
-A 0624,treated,205,D,male,90.4,healthy
-A 0625,control,200,D,male,92.9,healthy
-A 0626,control,196,C,female,78.5,diseased
-A 0627,treated,192,A,female,80.7,diseased
-A 0628,control,240,B,female,85.7,diseased
-A 0629,treated,185,D,male,88.2,healthy
-A 0630,treated,187,C,female,79.2,diseased
-A 0631,treated,211,C,male,94.5,healthy
-A 0632,treated,183,C,male,87.2,healthy
-A 0633,treated,199,C,female,80.7,healthy
-A 0634,treated,182,D,female,76.4,healthy
-A 0635,control,213,C,male,92.1,healthy
-A 0636,control,192,C,male,88,healthy
-A 0637,control,235,D,male,96.2,diseased
-A 0638,treated,209,D,female,80.8,diseased
-A 0639,treated,227,B,female,82.5,diseased
-A 0640,treated,205,C,female,81.2,healthy
-A 0641,control,182,C,male,88.1,diseased
-A 0642,treated,222,B,male,94.9,healthy
-A 0643,control,215,B,male,92.5,healthy
-A 0644,control,185,B,female,76.5,diseased
-A 0645,treated,199,A,female,80.4,healthy
-A 0646,treated,210,C,male,94,diseased
-A 0647,treated,199,D,male,90.8,healthy
-A 0648,treated,221,B,male,96,healthy
-A 0649,control,237,C,male,97.7,healthy
-A 0650,control,201,D,female,81.3,healthy
-A 0651,control,181,D,female,77.4,diseased
-A 0652,control,209,B,male,90.5,diseased
-A 0653,treated,218,D,female,83.5,healthy
-A 0654,treated,227,D,female,84.3,healthy
-A 0655,treated,207,D,female,81.3,diseased
-A 0656,control,208,D,female,80.8,diseased
-A 0657,treated,230,C,male,97,diseased
-A 0658,control,229,D,male,96.8,healthy
-A 0659,treated,197,D,female,79.6,healthy
-A 0660,treated,236,A,male,96.8,healthy
-A 0661,control,191,A,female,79.4,healthy
-A 0662,control,227,D,female,84.1,diseased
-A 0663,treated,203,B,male,90.7,healthy
-A 0664,control,188,B,female,80,healthy
-A 0665,control,204,A,female,79.7,healthy
-A 0666,control,229,B,male,94.8,healthy
-A 0667,treated,214,B,female,82,healthy
-A 0668,control,183,C,female,78.9,healthy
-A 0669,control,225,B,male,97.1,healthy
-A 0670,control,238,C,male,97.6,healthy
-A 0671,treated,216,A,female,83.2,healthy
-A 0672,control,210,C,female,81.9,diseased
-A 0673,treated,195,A,female,77.9,diseased
-A 0674,control,180,A,female,76.6,healthy
-A 0675,control,194,C,male,89.1,diseased
-A 0676,treated,226,C,male,96.4,healthy
-A 0677,control,211,B,male,91.5,healthy
-A 0678,treated,238,A,male,99.2,diseased
-A 0679,control,231,B,female,85.4,healthy
-A 0680,treated,224,D,female,85.2,healthy
-A 0681,treated,212,A,male,92.8,healthy
-A 0682,control,214,B,male,93.5,healthy
-A 0683,treated,237,D,male,98,healthy
-A 0684,treated,211,C,male,94.4,healthy
-A 0685,treated,192,C,male,88.7,healthy
-A 0686,treated,229,C,male,96.6,healthy
-A 0687,treated,228,D,male,96.4,healthy
-A 0688,control,222,D,male,96.9,diseased
-A 0689,control,205,D,female,80.1,healthy
-A 0690,treated,232,D,male,97.2,healthy
-A 0691,control,231,C,female,84.2,healthy
-A 0692,treated,232,D,male,96.7,diseased
-A 0693,control,180,A,female,77.3,healthy
-A 0694,treated,197,D,female,79.3,healthy
-A 0695,treated,215,C,female,81.2,diseased
-A 0696,treated,229,B,male,96.8,healthy
-A 0697,treated,191,C,female,77.4,healthy
-A 0698,control,232,A,female,83.6,healthy
-A 0699,control,232,D,male,95.5,healthy
-A 0700,control,236,D,female,85.7,healthy
-A 0701,treated,216,C,female,85,healthy
-A 0702,treated,236,B,male,97.4,diseased
-A 0703,treated,215,D,male,91.8,healthy
-A 0704,control,235,D,male,98,healthy
-A 0705,control,194,C,male,89.9,healthy
-A 0706,control,207,B,male,92.5,healthy
-A 0707,treated,185,A,female,78.7,healthy
-A 0708,treated,212,D,male,92.2,healthy
-A 0709,control,215,D,female,84,healthy
-A 0710,treated,191,C,female,78.5,healthy
-A 0711,treated,233,B,female,83.1,healthy
-A 0712,treated,219,D,male,95.4,diseased
-A 0713,treated,228,A,female,85.1,healthy
-A 0714,control,192,B,female,78.6,healthy
-A 0715,control,196,A,male,89.1,healthy
-A 0716,treated,201,A,female,82.2,healthy
-A 0717,treated,205,D,male,91.7,diseased
-A 0718,control,225,B,male,95.1,healthy
-A 0719,treated,223,A,male,96.5,healthy
-A 0720,treated,184,B,male,87.6,healthy
-A 0721,treated,227,B,female,82.5,healthy
-A 0722,treated,219,A,female,82.3,healthy
-A 0723,control,237,B,male,97.9,healthy
-A 0724,treated,187,A,male,89.1,healthy
-A 0725,control,183,D,female,77.5,healthy
-A 0726,control,192,B,male,88.6,diseased
-A 0727,treated,224,D,female,82.9,healthy
-A 0728,control,228,D,female,83.9,healthy
-A 0729,treated,211,C,female,81.4,healthy
-A 0730,treated,184,D,female,77.8,healthy
-A 0731,treated,229,A,male,97.4,healthy
-A 0732,treated,234,C,female,83.6,healthy
-A 0733,control,227,A,female,82.4,healthy
-A 0734,treated,202,A,female,80.7,healthy
-A 0735,treated,240,A,male,97.1,healthy
-A 0736,treated,222,D,male,96.5,healthy
-A 0737,treated,233,C,male,97.1,healthy
-A 0738,treated,212,D,male,92.8,healthy
-A 0739,treated,237,A,male,98,healthy
-A 0740,treated,205,B,female,79.7,healthy
-A 0741,treated,229,A,female,84.7,healthy
-A 0742,treated,218,D,male,94.2,healthy
-A 0743,control,233,A,female,85.4,healthy
-A 0744,control,214,B,male,94.5,healthy
-A 0745,treated,197,C,female,80.8,healthy
-A 0746,control,180,D,male,86,healthy
-A 0747,control,191,C,female,76.9,healthy
-A 0748,control,204,C,male,90.1,healthy
-A 0749,control,206,A,female,80.2,diseased
-A 0750,treated,195,C,female,78.8,healthy
-A 0751,control,220,D,female,83.1,healthy
-A 0752,control,196,D,male,87.8,healthy
-A 0753,control,224,B,female,84.7,healthy
-A 0754,treated,230,A,female,84.9,healthy
-A 0755,control,194,A,female,78.4,healthy
-A 0756,control,190,B,male,88.8,healthy
-A 0757,control,227,C,female,87,healthy
-A 0758,treated,204,B,male,92,healthy
-A 0759,control,182,D,female,78.2,healthy
-A 0760,treated,196,A,female,80.3,healthy
-A 0761,control,229,A,female,86.1,healthy
-A 0762,treated,194,D,female,79,healthy
-A 0763,treated,237,C,male,96.9,diseased
-A 0764,control,186,A,male,86.8,diseased
-A 0765,control,234,A,female,85.3,healthy
-A 0766,control,215,B,male,93.7,diseased
-A 0767,treated,238,A,male,96.2,healthy
-A 0768,treated,185,A,male,87.2,diseased
-A 0769,treated,223,C,female,85.9,healthy
-A 0770,control,216,B,female,81.9,healthy
-A 0771,treated,219,B,female,80.7,diseased
-A 0772,treated,183,B,female,77.9,diseased
-A 0773,treated,204,C,female,80.9,healthy
-A 0774,control,181,B,female,77.5,diseased
-A 0775,control,211,C,female,81,diseased
-A 0776,treated,214,A,male,93.6,healthy
-A 0777,control,237,C,male,98.9,healthy
-A 0778,treated,231,D,female,83,healthy
-A 0779,treated,215,A,female,83.2,healthy
-A 0780,treated,183,B,male,88.5,healthy
-A 0781,treated,184,B,male,86.9,healthy
-A 0782,control,239,C,male,99.8,healthy
-A 0783,control,197,C,male,91.2,healthy
-A 0784,control,227,A,male,95.4,diseased
-A 0785,control,233,A,female,84.9,diseased
-A 0786,treated,189,A,female,79.2,healthy
-A 0787,treated,237,C,female,86.5,healthy
-A 0788,control,212,B,male,93.3,diseased
-A 0789,treated,214,A,male,94.2,healthy
-A 0790,treated,194,C,female,80.3,healthy
-A 0791,control,233,D,male,97,healthy
-A 0792,control,221,A,male,95.6,healthy
-A 0793,control,193,D,male,89.2,diseased
-A 0794,control,210,D,female,81.6,healthy
-A 0795,treated,217,A,male,95.2,healthy
-A 0796,control,222,A,female,84,diseased
-A 0797,control,207,B,male,90.4,diseased
-A 0798,treated,234,C,female,85,diseased
-A 0799,control,211,A,male,92.2,healthy
-A 0800,treated,236,B,male,99.8,healthy
-A 0801,control,228,A,male,95.1,diseased
-A 0802,treated,221,B,male,95.1,healthy
-A 0803,treated,181,D,male,86.1,healthy
-A 0804,treated,237,A,male,99.1,diseased
-A 0805,treated,204,A,male,90.2,healthy
-A 0806,treated,197,C,female,78.6,healthy
-A 0807,treated,197,C,male,91,healthy
-A 0808,control,206,A,male,91.7,healthy
-A 0809,treated,230,C,female,84.6,healthy
-A 0810,control,239,C,male,97.5,diseased
-A 0811,control,190,A,female,78.2,healthy
-A 0812,treated,185,A,female,78.1,healthy
-A 0813,treated,234,A,female,86.2,healthy
-A 0814,control,222,B,female,83.6,diseased
-A 0815,treated,215,D,male,95.2,healthy
-A 0816,treated,223,C,male,96.6,diseased
-A 0817,control,222,A,female,84.1,healthy
-A 0818,treated,227,D,male,97,healthy
-A 0819,control,204,C,male,89.8,healthy
-A 0820,treated,194,A,male,89.1,healthy
-A 0821,control,190,D,male,88.3,healthy
-A 0822,control,182,B,male,87.1,healthy
-A 0823,treated,239,A,male,99.1,healthy
-A 0824,treated,194,C,male,89.4,healthy
-A 0825,treated,228,A,female,85.5,healthy
-A 0826,treated,207,D,female,80.4,diseased
-A 0827,control,192,A,female,79.9,healthy
-A 0828,control,226,C,female,84.2,healthy
-A 0829,control,194,A,female,80.5,healthy
-A 0830,treated,226,D,male,93.1,healthy
-A 0831,treated,230,A,female,84.2,diseased
-A 0832,treated,206,D,male,90.6,healthy
-A 0833,treated,215,C,female,81,healthy
-A 0834,control,201,A,female,81.6,healthy
-A 0835,treated,206,B,male,90.8,diseased
-A 0836,control,189,C,female,80,healthy
-A 0837,treated,201,C,male,91.4,healthy
-A 0838,treated,228,D,male,95.9,diseased
-A 0839,treated,206,D,female,80.8,healthy
-A 0840,treated,207,D,male,93.2,diseased
-A 0841,control,232,A,female,83.6,diseased
-A 0842,treated,232,A,female,85.8,healthy
-A 0843,control,182,D,male,87.6,healthy
-A 0844,treated,207,D,male,92.2,healthy
-A 0845,treated,225,B,male,95.6,healthy
-A 0846,control,187,D,female,77.1,healthy
-A 0847,treated,215,C,male,93.5,healthy
-A 0848,control,224,C,male,94.6,healthy
-A 0849,treated,196,B,female,78.5,healthy
-A 0850,control,201,D,male,91.5,diseased
-A 0851,control,234,A,male,97,diseased
-A 0852,treated,183,B,female,77.4,healthy
-A 0853,treated,189,A,male,88,healthy
-A 0854,treated,195,A,male,89.9,healthy
-A 0855,control,189,C,female,77,healthy
-A 0856,treated,202,D,male,91.5,healthy
-A 0857,treated,199,B,male,90.6,diseased
-A 0858,control,207,B,male,91.4,healthy
-A 0859,treated,237,C,male,100.1,healthy
-A 0860,control,201,C,female,79.5,diseased
-A 0861,treated,206,D,male,91.8,diseased
-A 0862,treated,182,A,female,78,healthy
-A 0863,treated,209,C,male,92.6,healthy
-A 0864,treated,227,D,female,84.5,healthy
-A 0865,treated,210,C,male,91.9,healthy
-A 0866,treated,240,A,female,87,healthy
-A 0867,control,197,C,male,87.7,healthy
-A 0868,control,235,C,female,84.3,healthy
-A 0869,control,187,D,female,80.8,healthy
-A 0870,control,234,C,male,97.9,healthy
-A 0871,treated,189,A,male,89.4,healthy
-A 0872,treated,224,D,male,93.2,healthy
-A 0873,treated,216,C,male,95.3,healthy
-A 0874,control,201,A,female,79.4,healthy
-A 0875,control,205,B,female,80.8,healthy
-A 0876,control,198,A,female,79.2,diseased
-A 0877,treated,212,C,female,82.9,healthy
-A 0878,treated,237,C,male,100.6,healthy
-A 0879,treated,221,D,female,82.7,diseased
-A 0880,treated,231,D,male,96.8,healthy
-A 0881,treated,231,D,male,97.7,healthy
-A 0882,treated,203,B,female,81.1,healthy
-A 0883,treated,227,C,male,96.5,healthy
-A 0884,control,198,A,male,92.2,healthy
-A 0885,treated,232,C,male,96.5,healthy
-A 0886,control,200,D,female,81.4,healthy
-A 0887,control,201,C,female,82.8,healthy
-A 0888,control,183,B,female,76.6,healthy
-A 0889,treated,188,D,male,88.5,healthy
-A 0890,treated,207,B,male,91.9,healthy
-A 0891,treated,229,A,female,83.5,healthy
-A 0892,control,204,C,female,81.7,diseased
-A 0893,control,182,D,male,88.3,healthy
-A 0894,control,202,D,male,92.8,healthy
-A 0895,control,238,A,female,88.7,diseased
-A 0896,control,210,B,female,80.2,healthy
-A 0897,treated,190,D,male,88.9,healthy
-A 0898,treated,228,C,male,97.3,healthy
-A 0899,control,203,C,male,91.8,diseased
-A 0900,treated,209,C,male,92.3,healthy
-A 0901,treated,194,C,female,80.6,healthy
-A 0902,control,210,D,male,92.7,healthy
-A 0903,treated,237,C,male,98.2,diseased
-A 0904,treated,204,A,male,92.1,healthy
-A 0905,treated,220,C,male,94,diseased
-A 0906,treated,181,C,male,87.6,healthy
-A 0907,control,232,D,female,83.5,diseased
-A 0908,control,195,D,female,78.2,healthy
-A 0909,treated,182,B,male,86.5,healthy
-A 0910,treated,194,C,female,79.1,healthy
-A 0911,treated,203,C,female,80.6,healthy
-A 0912,control,190,A,male,86.1,healthy
-A 0913,treated,198,D,male,91.6,diseased
-A 0914,treated,203,C,female,82.4,healthy
-A 0915,treated,184,A,female,77.6,healthy
-A 0916,treated,191,C,male,88.1,healthy
-A 0917,treated,233,D,female,84.3,healthy
-A 0918,control,183,B,male,86.6,healthy
-A 0919,treated,223,B,female,83.3,healthy
-A 0920,control,213,B,female,81.7,healthy
-A 0921,control,199,D,male,90.1,healthy
-A 0922,control,193,D,female,78.8,healthy
-A 0923,treated,227,D,male,96.9,healthy
-A 0924,treated,226,D,male,96.6,diseased
-A 0925,control,189,C,male,88.5,healthy
-A 0926,control,195,D,female,80.7,healthy
-A 0927,treated,211,A,female,82.9,healthy
-A 0928,control,199,A,female,81.9,healthy
-A 0929,treated,218,B,female,82.3,healthy
-A 0930,control,205,C,male,93.1,diseased
-A 0931,control,221,C,male,96.8,healthy
-A 0932,treated,230,B,male,96.4,healthy
-A 0933,treated,183,D,female,77,healthy
-A 0934,treated,197,D,male,87,healthy
-A 0935,control,221,D,female,82.9,healthy
-A 0936,control,191,B,female,77.7,diseased
-A 0937,control,221,D,female,83.8,healthy
-A 0938,treated,206,B,male,91.5,healthy
-A 0939,control,180,D,female,79,healthy
-A 0940,treated,211,D,male,91.9,healthy
-A 0941,treated,207,C,male,90.2,diseased
-A 0942,treated,218,C,female,83.2,healthy
-A 0943,treated,215,C,female,80.7,healthy
-A 0944,control,212,B,female,80.8,diseased
-A 0945,treated,182,D,male,86.8,healthy
-A 0946,treated,198,D,male,90.6,diseased
-A 0947,treated,197,D,male,90.5,healthy
-A 0948,control,231,D,female,84.9,healthy
-A 0949,control,208,D,male,90.4,diseased
-A 0950,control,214,B,male,94,diseased
-A 0951,treated,207,C,female,82.8,healthy
-A 0952,treated,187,B,male,88.3,healthy
-A 0953,control,202,C,female,81.5,diseased
-A 0954,control,201,C,female,81.2,healthy
-A 0955,treated,201,A,male,91.8,healthy
-A 0956,control,218,A,male,91.9,diseased
-A 0957,control,184,D,female,76.5,healthy
-A 0958,treated,228,B,male,96.1,healthy
-A 0959,control,191,C,female,77.3,diseased
-A 0960,treated,229,A,female,83.8,healthy
-A 0961,control,217,D,male,96.7,diseased
-A 0962,treated,236,A,male,98.4,healthy
-A 0963,treated,223,D,male,95.8,healthy
-A 0964,treated,189,A,female,78.7,healthy
-A 0965,treated,215,B,female,83.2,diseased
-A 0966,treated,236,A,female,85.9,healthy
-A 0967,control,223,B,female,84.5,healthy
-A 0968,treated,214,D,male,93.9,healthy
-A 0969,control,231,C,male,98,healthy
-A 0970,treated,198,A,female,79.3,diseased
-A 0971,treated,189,B,female,78.4,healthy
-A 0972,control,207,A,female,80.4,healthy
-A 0973,treated,231,C,male,98.1,healthy
-A 0974,control,204,C,female,81.5,healthy
-A 0975,treated,207,B,male,93.2,healthy
-A 0976,treated,195,D,female,80.3,healthy
-A 0977,control,238,D,female,86.8,healthy
-A 0978,treated,219,A,male,93.5,healthy
-A 0979,treated,236,B,male,97.5,healthy
-A 0980,treated,235,A,female,86.5,diseased
-A 0981,treated,194,D,male,90.5,healthy
-A 0982,control,188,C,female,79.7,healthy
-A 0983,control,189,C,female,77.7,healthy
-A 0984,treated,197,C,female,79.2,healthy
-A 0985,treated,196,C,female,79.1,healthy
-A 0986,treated,202,B,male,92.9,healthy
-A 0987,treated,209,D,male,93.1,diseased
-A 0988,treated,205,B,male,92.3,healthy
-A 0989,control,236,A,female,86.6,healthy
-A 0990,treated,232,B,female,85,healthy
-A 0991,treated,225,C,female,82.4,healthy
-A 0992,control,201,A,female,80.1,healthy
-A 0993,control,221,B,male,96.3,healthy
-A 0994,treated,218,D,female,83.6,healthy
-A 0995,control,189,B,male,89,healthy
-A 0996,control,225,C,female,85.1,diseased
-A 0997,control,198,A,male,87.8,diseased
-A 0998,treated,197,B,male,92,healthy
-A 0999,treated,188,A,male,87.4,diseased
-A 1000,treated,229,C,male,97.1,diseased
+A0001,treated,218,D,female,80.9,healthy
+A0002,treated,238,B,female,86.8,healthy
+A0003,control,215,B,female,83.4,healthy
+A0004,treated,237,A,male,99.5,diseased
+A0005,treated,192,C,female,78.8,healthy
+A0006,treated,186,A,female,79.3,healthy
+A0007,control,222,C,female,82.7,healthy
+A0008,treated,189,C,male,90.6,healthy
+A0009,treated,213,C,female,83.3,healthy
+A0010,control,211,B,male,94,healthy
+A0011,treated,197,D,female,79.6,healthy
+A0012,treated,214,C,male,93.5,healthy
+A0013,treated,206,C,male,92.2,healthy
+A0014,treated,183,A,female,77.9,healthy
+A0015,control,204,C,female,80.8,healthy
+A0016,treated,230,D,female,84.1,diseased
+A0017,treated,193,D,male,87.8,healthy
+A0018,treated,196,D,male,89.9,healthy
+A0019,treated,208,C,male,92,healthy
+A0020,control,197,D,female,81.1,healthy
+A0021,control,209,A,male,92.4,healthy
+A0022,treated,231,C,male,96,diseased
+A0023,control,234,D,male,98.8,healthy
+A0024,control,192,A,female,78.8,healthy
+A0025,treated,233,D,female,85.8,healthy
+A0026,control,189,B,male,88.2,healthy
+A0027,control,221,B,female,83.1,healthy
+A0028,treated,204,A,male,91.9,healthy
+A0029,control,203,A,male,91.4,healthy
+A0030,treated,236,C,male,98.3,diseased
+A0031,treated,188,B,male,89,healthy
+A0032,control,194,D,female,79.1,diseased
+A0033,control,223,B,female,83.8,healthy
+A0034,control,202,C,female,81.4,healthy
+A0035,control,211,C,female,82.5,healthy
+A0036,control,213,D,male,93.7,healthy
+A0037,treated,182,A,male,86.8,healthy
+A0038,control,198,B,female,79.2,healthy
+A0039,treated,232,A,male,97.3,healthy
+A0040,treated,225,C,male,94.5,healthy
+A0041,control,185,B,female,78.5,healthy
+A0042,treated,219,C,female,84,healthy
+A0043,treated,204,D,female,80,healthy
+A0044,control,233,C,female,84,healthy
+A0045,control,213,B,male,91.5,healthy
+A0046,control,234,C,female,84.4,diseased
+A0047,control,196,A,female,78.5,healthy
+A0048,treated,182,D,male,87.3,healthy
+A0049,control,226,C,female,84.8,healthy
+A0050,treated,204,D,male,90.2,healthy
+A0051,treated,218,B,female,82.3,healthy
+A0052,treated,212,C,male,93.4,healthy
+A0053,treated,211,B,male,92.8,healthy
+A0054,treated,225,B,female,86.1,healthy
+A0055,control,219,C,male,95.2,healthy
+A0056,control,205,D,male,93.5,healthy
+A0057,treated,214,D,male,94.4,healthy
+A0058,treated,199,B,female,78.7,healthy
+A0059,treated,191,A,male,88.2,healthy
+A0060,control,184,B,female,78.4,healthy
+A0061,control,230,B,female,83.4,healthy
+A0062,control,216,B,male,91.9,healthy
+A0063,treated,186,C,male,86.6,healthy
+A0064,treated,195,A,female,79.8,healthy
+A0065,treated,211,A,male,92.5,diseased
+A0066,control,226,A,female,83.8,healthy
+A0067,treated,240,A,female,86.8,healthy
+A0068,treated,224,D,male,94.3,healthy
+A0069,treated,238,D,female,86,healthy
+A0070,treated,239,C,male,99.6,diseased
+A0071,treated,189,C,female,77.8,healthy
+A0072,treated,218,D,female,82.5,healthy
+A0073,treated,236,A,male,97.7,healthy
+A0074,treated,214,C,male,93.4,diseased
+A0075,treated,222,A,male,94.2,healthy
+A0076,control,182,A,male,87.9,healthy
+A0077,treated,213,C,female,81.5,healthy
+A0078,treated,187,B,female,79.2,healthy
+A0079,treated,202,C,female,80.2,healthy
+A0080,control,186,A,male,87.9,healthy
+A0081,treated,222,C,male,95.7,healthy
+A0082,treated,185,C,male,87.3,healthy
+A0083,treated,195,D,male,91.1,healthy
+A0084,treated,212,A,female,81.9,healthy
+A0085,treated,200,C,male,90.7,healthy
+A0086,control,204,B,female,80.3,healthy
+A0087,treated,190,D,male,88.6,healthy
+A0088,treated,190,B,male,89.5,healthy
+A0089,control,228,A,male,96.6,diseased
+A0090,control,188,B,female,78.4,healthy
+A0091,control,181,A,female,76.1,healthy
+A0092,treated,230,A,male,95.6,healthy
+A0093,control,191,D,female,80.7,healthy
+A0094,treated,223,D,male,95.3,healthy
+A0095,control,184,D,male,86.8,healthy
+A0096,control,187,D,female,79,healthy
+A0097,control,190,B,male,88.8,healthy
+A0098,control,182,B,female,79.1,healthy
+A0099,control,230,A,male,97.8,healthy
+A0100,treated,229,B,female,83.2,healthy
+A0101,treated,233,B,female,84.6,healthy
+A0102,control,205,D,male,91.4,diseased
+A0103,control,186,C,male,86.4,healthy
+A0104,treated,199,A,male,89.6,healthy
+A0105,control,192,C,female,77.8,healthy
+A0106,treated,217,B,male,93.6,healthy
+A0107,control,196,D,male,91.5,diseased
+A0108,treated,183,A,female,78.6,healthy
+A0109,treated,238,B,male,95.5,healthy
+A0110,treated,196,B,female,80.3,healthy
+A0111,control,226,D,male,96,healthy
+A0112,control,232,A,male,96.6,healthy
+A0113,treated,240,A,male,98,diseased
+A0114,control,212,C,male,94.4,healthy
+A0115,control,194,C,male,89.7,healthy
+A0116,treated,196,C,male,90.9,healthy
+A0117,control,193,A,female,78.1,healthy
+A0118,treated,210,B,female,80.7,healthy
+A0119,control,198,C,female,78.8,healthy
+A0120,treated,181,C,female,76.7,healthy
+A0121,treated,217,D,male,94.8,healthy
+A0122,treated,189,A,male,89.3,healthy
+A0123,treated,184,D,female,77.5,healthy
+A0124,treated,199,C,female,81.1,healthy
+A0125,treated,186,D,female,77.7,healthy
+A0126,treated,204,D,female,81.1,healthy
+A0127,treated,192,C,male,90.9,healthy
+A0128,treated,223,D,male,94.3,diseased
+A0129,control,238,A,male,98.1,healthy
+A0130,control,204,C,female,81.3,healthy
+A0131,treated,224,C,male,96.5,healthy
+A0132,treated,190,C,male,89.4,healthy
+A0133,treated,214,A,female,83.1,healthy
+A0134,control,185,A,female,77.5,healthy
+A0135,treated,230,D,male,96.4,healthy
+A0136,treated,218,B,female,82.8,healthy
+A0137,control,212,B,female,82.8,diseased
+A0138,control,190,C,female,77.4,healthy
+A0139,control,208,A,male,92,healthy
+A0140,treated,193,A,female,79.7,healthy
+A0141,treated,225,D,male,96.4,healthy
+A0142,treated,229,C,female,85,healthy
+A0143,treated,216,B,female,82.3,healthy
+A0144,treated,235,B,female,84.4,healthy
+A0145,treated,226,A,female,85,healthy
+A0146,treated,199,C,female,80.5,healthy
+A0147,treated,236,C,male,97.9,healthy
+A0148,treated,231,A,male,97.5,healthy
+A0149,treated,190,D,female,78.4,healthy
+A0150,control,181,D,male,85.6,healthy
+A0151,control,207,D,male,93.1,healthy
+A0152,control,186,D,female,78.4,healthy
+A0153,treated,189,C,male,87.3,healthy
+A0154,control,228,A,male,96.7,diseased
+A0155,treated,217,A,male,93.4,healthy
+A0156,treated,235,B,male,98.7,healthy
+A0157,control,225,C,female,83.6,healthy
+A0158,control,186,D,female,79.2,healthy
+A0159,treated,235,A,male,98.2,healthy
+A0160,treated,233,C,male,97.2,diseased
+A0161,treated,234,D,male,98.3,healthy
+A0162,treated,235,B,female,83.9,healthy
+A0163,control,224,C,male,96.8,healthy
+A0164,treated,232,D,male,97.3,healthy
+A0165,treated,234,D,male,97.5,healthy
+A0166,treated,182,B,male,87.1,healthy
+A0167,treated,239,A,male,97.4,healthy
+A0168,control,181,B,female,77.6,healthy
+A0169,treated,218,B,male,93.8,healthy
+A0170,treated,193,B,female,77.6,healthy
+A0171,treated,232,A,female,86.2,healthy
+A0172,control,199,B,female,78.3,healthy
+A0173,control,190,A,male,89.4,healthy
+A0174,control,233,B,female,85.5,healthy
+A0175,treated,228,D,female,84.7,healthy
+A0176,treated,216,A,female,81.8,healthy
+A0177,control,224,D,male,96.2,healthy
+A0178,control,220,A,female,82.8,diseased
+A0179,control,194,D,male,90.5,healthy
+A0180,control,214,C,female,82,healthy
+A0181,treated,208,C,female,80.5,healthy
+A0182,treated,226,D,male,94.7,healthy
+A0183,control,217,B,male,94.5,diseased
+A0184,treated,201,C,male,89.5,healthy
+A0185,control,219,B,female,81.9,healthy
+A0186,treated,206,A,female,80.8,healthy
+A0187,control,181,A,female,76.3,healthy
+A0188,treated,213,D,male,94.7,healthy
+A0189,control,195,D,female,79.2,healthy
+A0190,control,188,A,male,88,healthy
+A0191,control,191,B,male,88.8,healthy
+A0192,control,195,A,male,90.5,healthy
+A0193,treated,191,B,male,89.9,healthy
+A0194,treated,227,A,female,83,healthy
+A0195,treated,218,C,male,95.2,healthy
+A0196,treated,221,A,male,96.2,healthy
+A0197,control,193,C,male,88.3,healthy
+A0198,treated,208,B,female,82.2,healthy
+A0199,treated,199,B,female,81.1,healthy
+A0200,treated,230,B,female,84.9,healthy
+A0201,treated,224,C,male,95.2,healthy
+A0202,treated,234,C,male,99.4,diseased
+A0203,control,181,C,female,75.8,healthy
+A0204,control,181,D,female,74,healthy
+A0205,treated,192,B,male,89.4,healthy
+A0206,control,211,B,female,83.9,healthy
+A0207,treated,227,C,female,85.5,healthy
+A0208,control,230,A,male,97.9,healthy
+A0209,control,192,D,female,78,healthy
+A0210,treated,224,A,male,97,healthy
+A0211,control,192,C,female,78.7,healthy
+A0212,treated,213,C,male,93.5,healthy
+A0213,control,205,C,male,93.7,healthy
+A0214,control,185,D,male,85.2,healthy
+A0215,treated,201,B,male,90.6,healthy
+A0216,treated,186,C,male,87,healthy
+A0217,control,235,C,female,86.2,healthy
+A0218,control,192,B,male,90.4,healthy
+A0219,control,217,C,female,81.2,healthy
+A0220,control,188,C,male,88.7,healthy
+A0221,control,185,C,male,88.3,healthy
+A0222,control,219,A,female,81.5,healthy
+A0223,treated,210,D,male,91.6,healthy
+A0224,control,193,C,female,79.1,healthy
+A0225,treated,184,D,male,86.5,healthy
+A0226,control,192,D,male,86.5,healthy
+A0227,control,210,A,female,80.2,healthy
+A0228,control,226,D,male,96.7,diseased
+A0229,treated,231,A,male,96,healthy
+A0230,treated,185,A,male,87.4,healthy
+A0231,control,213,A,male,91.8,healthy
+A0232,control,239,A,female,86.8,diseased
+A0233,control,193,D,female,77.9,healthy
+A0234,control,210,A,male,92.9,healthy
+A0235,control,192,C,male,87.8,diseased
+A0236,treated,229,A,male,95.6,healthy
+A0237,treated,188,C,male,89.1,healthy
+A0238,treated,207,A,male,90.7,healthy
+A0239,treated,184,C,female,78.5,healthy
+A0240,treated,207,A,male,91.6,healthy
+A0241,control,182,A,male,87.1,healthy
+A0242,treated,202,C,female,81.8,healthy
+A0243,treated,238,D,female,87.5,healthy
+A0244,control,217,D,male,94,healthy
+A0245,treated,197,A,female,79.8,healthy
+A0246,control,184,D,female,79,healthy
+A0247,treated,237,B,female,84.7,healthy
+A0248,treated,217,D,male,94,healthy
+A0249,treated,198,D,female,78.8,healthy
+A0250,treated,219,C,male,94.4,healthy
