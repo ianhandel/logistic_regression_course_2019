@@ -134,7 +134,7 @@ What is the odds that a 6 sided die 🎲lands on 4?
 
 --
 
-$$1/5 \simeq 0.2$$
+$$1/5 = 0.2$$
 
 
 ---
