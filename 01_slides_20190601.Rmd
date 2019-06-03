@@ -5,7 +5,7 @@ institute: "University of Edinburgh"
 date: "June 2019"
 output:
   xaringan::moon_reader:
-    css: ["default", "rladies", "rladies-fonts"]
+    css: ["default", "metropolis", "metropolis-fonts"]
     lib_dir: libs
     nature:
       highlightStyle: github
@@ -73,7 +73,7 @@ purple <- "#CAB2D6"
 - Be able to explain basic R glm __output__
 - Be able to explain __estimates__ with categorical and continuous variables
 - Explain __significance test results__ on variables
-- Explain that __assumes linear in log odds__ in v basic terms - why it matters
+- Things to watch out for!
 - __Know where to go next!__
 
 ---
@@ -433,13 +433,7 @@ print(summary(mod_disease), digits = 2)
 
 ---
 
-# Interpreting the output
-
-The estimates = log(odds ratios)
-
-i.e. 
-
-$$\frac{odds\ of\ outcome\ if\ have\ factor}{odds\ of\ outcome\ if\ dont\ have\ factor}$$
+# The output
 
 Lets get 'tidy output...
 
@@ -447,10 +441,23 @@ Lets get 'tidy output...
 tidy(mod_disease) #tidy from the broom package
 ```
 
+---
+
+# odds ratios
+
+The estimates = log(odds ratios)
+
+i.e. 
+
+$$\frac{odds\ of\ outcome\ if\ have\ factor}{odds\ of\ outcome\ if\ dont\ have\ factor}$$
+
 So we get odds ratios by 'inverse logging them'.
+
+We can remove the intercept.
 
 ```{r}
 tidy(mod_disease) %>% 
+  filter(term != "(Intercept)") %>% 
   mutate(OR = exp(estimate))
 ```
 
@@ -458,17 +465,66 @@ tidy(mod_disease) %>%
 
 # A results table
 
-```{r}
+```{r, eval = FALSE}
 tidy(mod_disease) %>%
   mutate(OR = exp(estimate)) %>% 
     bind_cols(exp(confint(mod_disease)) %>% 
     as_tibble()
-  )
+  ) %>% 
+  filter(term != "(Intercept)") %>% 
+  select(term, OR, `2.5 %`, `97.5 %`, p.value)
 ```
+.small[
+
+```{r, echo = FALSE, message=FALSE}
+tidy(mod_disease) %>%
+  mutate(OR = exp(estimate)) %>% 
+    bind_cols(exp(confint(mod_disease)) %>% 
+    as_tibble()
+  ) %>% 
+  filter(term != "(Intercept)") %>% 
+  select(term, OR, `2.5 %`, `97.5 %`, p.value) %>% 
+  kable(format = "html", digits = 3)
+```
+]
+
+--
+
+But what does it mean?
 
 ---
 
+# Interpreting the odds ratios
 
+### Numerical predictors
+
+### Categorical predictors
+
+---
+
+# Things to watch out for
+
+### Factor levels
+
+How does R know if you are predicting 'healthy' or 'diseased'?
+
+--
+
+### Perfect predictors
+
+E.g. all the males are diseased and all the females are healthy
+
+--
+
+### Linear on logit 😱
+
+Disease risk might go up and then down
+
+---
+
+# More help
+
+Dohoo book
 
 
 
