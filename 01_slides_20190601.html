@@ -5,8 +5,8 @@
     <meta charset="utf-8" />
     <meta name="author" content="Ian Handel" />
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
-    <link href="libs/remark-css-0.0.1/rladies.css" rel="stylesheet" />
-    <link href="libs/remark-css-0.0.1/rladies-fonts.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/metropolis.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/metropolis-fonts.css" rel="stylesheet" />
     <script src="libs/kePrint-0.0.1/kePrint.js"></script>
   </head>
   <body>
@@ -66,7 +66,7 @@ code.r.hljs.remark-code{
 - Be able to explain basic R glm __output__
 - Be able to explain __estimates__ with categorical and continuous variables
 - Explain __significance test results__ on variables
-- Explain that __assumes linear in log odds__ in v basic terms - why it matters
+- Things to watch out for!
 - __Know where to go next!__
 
 ---
@@ -701,13 +701,7 @@ Number of Fisher Scoring iterations: 6
 
 ---
 
-# Interpreting the output
-
-The estimates = log(odds ratios)
-
-i.e. 
-
-`$$\frac{odds\ of\ outcome\ if\ have\ factor}{odds\ of\ outcome\ if\ dont\ have\ factor}$$`
+# The output
 
 Lets get 'tidy output...
 
@@ -725,21 +719,33 @@ tidy(mod_disease) #tidy from the broom package
 3 age                0.0631    0.0162      3.89 0.000101 
 ```
 
+---
+
+# odds ratios
+
+The estimates = log(odds ratios)
+
+i.e. 
+
+`$$\frac{odds\ of\ outcome\ if\ have\ factor}{odds\ of\ outcome\ if\ dont\ have\ factor}$$`
+
 So we get odds ratios by 'inverse logging them'.
+
+We can remove the intercept.
 
 
 ```r
 tidy(mod_disease) %&gt;% 
+  filter(term != "(Intercept)") %&gt;% 
   mutate(OR = exp(estimate))
 ```
 
 ```
-# A tibble: 3 x 6
-  term             estimate std.error statistic   p.value          OR
-  &lt;chr&gt;               &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;
-1 (Intercept)      -15.4       3.54       -4.35 0.0000139 0.000000211
-2 treatmenttreated  -0.952     0.478      -1.99 0.0465    0.386      
-3 age                0.0631    0.0162      3.89 0.000101  1.07       
+# A tibble: 2 x 6
+  term             estimate std.error statistic  p.value    OR
+  &lt;chr&gt;               &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;
+1 treatmenttreated  -0.952     0.478      -1.99 0.0465   0.386
+2 age                0.0631    0.0162      3.89 0.000101 1.07 
 ```
 
 ---
@@ -752,23 +758,78 @@ tidy(mod_disease) %&gt;%
   mutate(OR = exp(estimate)) %&gt;% 
     bind_cols(exp(confint(mod_disease)) %&gt;% 
     as_tibble()
-  )
+  ) %&gt;% 
+  filter(term != "(Intercept)") %&gt;% 
+  select(term, OR, `2.5 %`, `97.5 %`, p.value)
 ```
+.small[
 
-```
-Waiting for profiling to be done...
-```
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; term &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; OR &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; 2.5 % &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; 97.5 % &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; p.value &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; treatmenttreated &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.386 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.148 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.980 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.047 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; age &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.065 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.034 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.103 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+]
 
-```
-# A tibble: 3 x 8
-  term      estimate std.error statistic p.value       OR  `2.5 %` `97.5 %`
-  &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
-1 (Interce… -15.4       3.54       -4.35 1.39e-5  2.11e-7 1.02e-10 0.000125
-2 treatmen…  -0.952     0.478      -1.99 4.65e-2  3.86e-1 1.48e- 1 0.980   
-3 age         0.0631    0.0162      3.89 1.01e-4  1.07e+0 1.03e+ 0 1.10    
-```
+--
+
+But what does it mean?
 
 ---
+
+# Interpreting the odds ratios
+
+### Numerical predictors
+
+### Categorical predictors
+
+---
+
+# Things to watch out for
+
+### Factor levels
+
+How does R know if you are predicting 'healthy' or 'diseased'?
+
+--
+
+### Perfect predictors
+
+E.g. all the males are diseased and all the females are healthy
+
+--
+
+### Linear on logit 😱
+
+Disease risk might go up and then down
+
+---
+
+# More help
+
+Dohoo book
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
