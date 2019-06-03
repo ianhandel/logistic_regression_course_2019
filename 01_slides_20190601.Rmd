@@ -5,7 +5,7 @@ institute: "University of Edinburgh"
 date: "June 2019"
 output:
   xaringan::moon_reader:
-    css: ["default", "metropolis", "metropolis-fonts"]
+    css: ["default", "rladies", "rladies-fonts"]
     lib_dir: libs
     nature:
       highlightStyle: github
@@ -41,18 +41,26 @@ output:
 code.r.hljs.remark-code{
   background-color: #E0E0E0;
 }
+
+.large { font-size: 120% }
+.small { font-size: 80% }
 ```
 
 ```{r, include= FALSE}
 library(tidyverse)
 library(here)
 library(knitr)
+library(kableExtra)
+library(broom)
+library(sjPlot)
 
 set.seed(42)
 
 opts_chunk$set(comment = "")
 
 dat <- read_csv(here("logreg_course", "logreg_data_01_20190530.csv"))
+
+purple <- "#CAB2D6"
 ```
 
 
@@ -73,11 +81,10 @@ dat <- read_csv(here("logreg_course", "logreg_data_01_20190530.csv"))
 
 ```{r, eval = FALSE}
 library(tidyverse)
-library(usethis)
 library(boot)
+library(broom)
 library(skimr)
-
-use_course("XXXX")
+library(sjPlot)
 
 dat <- read_csv("logreg_data_01_20190530.csv")
 
@@ -191,6 +198,12 @@ ggsave(here("figures", "lin_regression_plot.png"))
 ![](figures/lin_regression_plot.png)
 ]
 
+```{r, eval = FALSE}
+mod <- lm(weight ~ age + sex, data = dat
+```
+
+
+
 ```{r, echo = FALSE}
 mod1 <- lm(weight ~ age + sex, data = dat)
 print(summary(mod1), digits = 2)
@@ -252,7 +265,7 @@ Then use linear regression...
 
 # Linear regression 1
 
-```{r, echo = FALSE, dev = 'svg', fig.height=4}
+```{r, echo = FALSE, dev = 'svg', fig.height=3}
 ggplot(dat) +
   aes(age, status01, colour = treatment) +
   geom_point(shape = 1) +
@@ -269,7 +282,7 @@ ggplot(dat) +
 
 # Linear regression 2
 
-```{r, echo = FALSE, dev = 'svg', fig.height=4}
+```{r, echo = FALSE, dev = 'svg', fig.height=3}
 last_plot() +
   geom_smooth(method = "lm", se = FALSE, lwd = 0.5)
 ```
@@ -288,14 +301,172 @@ last_plot() +
 
 ---
 
-class: inverse, middle, center
+# So how do we fix this?
 
-# Worked example
+__Linear regression does this...__
+
+$weight \sim \beta_0 + \beta_1 age + \beta_2 sex + \epsilon$
+
+or in english...
+
+The outcome, $weight$, is related to the predictors
+
+by one or more straight lines.
+
+.plot-callout[
+  ![](figures/lin_regression_plot.png)
+]
+
+--
+
+__For binary data we want__
+
+Our outcome to be 0 or 1
+
+So rather than modelling the outcome.
+
+We model the __probability__ of something e.g. being diseased...
 
 ---
 
+# The logistic bit...
+
+Linear regression models model numbers, any numbers!
+
+Probabilities go from...
+
+--
+
+0 to 1
+
+--
+
+So we need to turn any number into 0 - 1
+
+--
+
+```{r, echo = FALSE, dev = 'svg', fig.height=3, fig.width=4, fig.align='center'}
+tibble(y = seq(-10, 10, 0.1),
+       prob = boot::inv.logit(y)) %>% 
+  ggplot() +
+  aes(y, prob) +
+  geom_line(colour = purple, lwd = 2) +
+  labs(x = "linear regression value",
+       y = "probability",
+       title = "The inverse logit") +
+  theme_bw(base_size = 12)
+
+```
+
+In fact the regression value is the log of the odds of the outcome.
+
+---
+
+#The logistic bit 2
+
+So we have an outcome, e.g. being diseased vs healthy, that is coded 0 or 1
+
+And our model is
+
+$$ log_e(\frac{prob}{1 - prob}) \sim \beta_0 + \beta_1 age + \beta_2 treatment) $$
+
+or in english
 
 
+__The log of the odds of an animal being diseased are modelled by a linear combination of the predictor variables__
+
+
+---
+
+class: inverse, middle, center
+
+# Worked example in R
+
+---
+
+# R code for logistic regression
+
+```{r, eval= FALSE}
+head(dat)
+```
+
+
+```{r, echo = FALSE}
+head(dat) %>% 
+  kable(format = "html") %>% 
+  kable_styling(font_size = 8)
+```
+
+A linear model of weight
+
+```{r, eval = FALSE}
+mod_weight <- lm(weight ~ age + sex, data = dat)
+```
+
+A logistic regression model of disease status
+
+```{r}
+mod_disease <- glm(status01 ~ treatment + age, family = binomial, data = dat)
+```
+
+---
+
+# The output
+
+.small[
+
+```{r}
+summary(mod_disease)
+```
+]
+
+---
+
+# The output
+
+.small[
+
+```{r, highlight.output = c(10, 11, 12, 13, 14)}
+print(summary(mod_disease), digits = 2)
+```
+]
+
+---
+
+# Interpreting the output
+
+The estimates = log(odds ratios)
+
+i.e. 
+
+$$\frac{odds\ of\ outcome\ if\ have\ factor}{odds\ of\ outcome\ if\ dont\ have\ factor}$$
+
+Lets get 'tidy output...
+
+```{r}
+tidy(mod_disease) #tidy from the broom package
+```
+
+So we get odds ratios by 'inverse logging them'.
+
+```{r}
+tidy(mod_disease) %>% 
+  mutate(OR = exp(estimate))
+```
+
+---
+
+# A results table
+
+```{r}
+tidy(mod_disease) %>%
+  mutate(OR = exp(estimate)) %>% 
+    bind_cols(exp(confint(mod_disease)) %>% 
+    as_tibble()
+  )
+```
+
+---
 
 
 

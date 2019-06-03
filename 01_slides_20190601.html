@@ -5,8 +5,9 @@
     <meta charset="utf-8" />
     <meta name="author" content="Ian Handel" />
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
-    <link href="libs/remark-css-0.0.1/metropolis.css" rel="stylesheet" />
-    <link href="libs/remark-css-0.0.1/metropolis-fonts.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/rladies.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/rladies-fonts.css" rel="stylesheet" />
+    <script src="libs/kePrint-0.0.1/kePrint.js"></script>
   </head>
   <body>
     <textarea id="source">
@@ -48,6 +49,9 @@ class: center, middle, inverse, title-slide
 code.r.hljs.remark-code{
   background-color: #E0E0E0;
 }
+
+.large { font-size: 120% }
+.small { font-size: 80% }
 &lt;/style&gt;
 
 
@@ -71,11 +75,10 @@ code.r.hljs.remark-code{
 
 ```r
 library(tidyverse)
-library(usethis)
 library(boot)
+library(broom)
 library(skimr)
-
-use_course("XXXX")
+library(sjPlot)
 
 dat &lt;- read_csv("logreg_data_01_20190530.csv")
 
@@ -175,6 +178,13 @@ What is the odds that a 6 sided die 🎲lands on 4?
 .plot-callout[
 ![](figures/lin_regression_plot.png)
 ]
+
+
+```r
+mod &lt;- lm(weight ~ age + sex, data = dat
+```
+
+
 
 
 ```
@@ -418,13 +428,13 @@ Then use linear regression...
 
 # Linear regression 1
 
-![](01_slides_20190601_files/figure-html/unnamed-chunk-11-1.svg)&lt;!-- --&gt;
+![](01_slides_20190601_files/figure-html/unnamed-chunk-12-1.svg)&lt;!-- --&gt;
 
 ---
 
 # Linear regression 2
 
-![](01_slides_20190601_files/figure-html/unnamed-chunk-12-1.svg)&lt;!-- --&gt;
+![](01_slides_20190601_files/figure-html/unnamed-chunk-13-1.svg)&lt;!-- --&gt;
 
 --
 
@@ -440,9 +450,323 @@ Then use linear regression...
 
 ---
 
+# So how do we fix this?
+
+__Linear regression does this...__
+
+`\(weight \sim \beta_0 + \beta_1 age + \beta_2 sex + \epsilon\)`
+
+or in english...
+
+The outcome, `\(weight\)`, is related to the predictors
+
+by one or more straight lines.
+
+.plot-callout[
+  ![](figures/lin_regression_plot.png)
+]
+
+--
+
+__For binary data we want__
+
+Our outcome to be 0 or 1
+
+So rather than modelling the outcome.
+
+We model the __probability__ of something e.g. being diseased...
+
+---
+
+# The logistic bit...
+
+Linear regression models model numbers, any numbers!
+
+Probabilities go from...
+
+--
+
+0 to 1
+
+--
+
+So we need to turn any number into 0 - 1
+
+--
+
+&lt;img src="01_slides_20190601_files/figure-html/unnamed-chunk-14-1.svg" style="display: block; margin: auto;" /&gt;
+
+In fact the regression value is the log of the odds of the outcome.
+
+---
+
+#The logistic bit 2
+
+So we have an outcome, e.g. being diseased vs healthy, that is coded 0 or 1
+
+And our model is
+
+$$ log_e(\frac{prob}{1 - prob}) \sim \beta_0 + \beta_1 age + \beta_2 treatment) $$
+
+or in english
+
+
+__The log of the odds of an animal being diseased are modelled by a linear combination of the predictor variables__
+
+
+---
+
 class: inverse, middle, center
 
-# Worked example
+# Worked example in R
+
+---
+
+# R code for logistic regression
+
+
+```r
+head(dat)
+```
+
+
+&lt;table class="table" style="font-size: 8px; margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; ID &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; treatment &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; age &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; region &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; sex &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; weight &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; status &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; status01 &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; A0001 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; treated &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 218 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; D &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; female &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 80.9 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; healthy &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; A0002 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; treated &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 238 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; B &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; female &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 86.8 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; healthy &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; A0003 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; control &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 215 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; B &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; female &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 83.4 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; healthy &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; A0004 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; treated &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 237 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; A &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; male &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 99.5 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; diseased &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; A0005 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; treated &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 192 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; C &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; female &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 78.8 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; healthy &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; A0006 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; treated &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 186 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; A &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; female &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 79.3 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; healthy &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+A linear model of weight
+
+
+```r
+mod_weight &lt;- lm(weight ~ age + sex, data = dat)
+```
+
+A logistic regression model of disease status
+
+
+```r
+mod_disease &lt;- glm(status01 ~ treatment + age, family = binomial, data = dat)
+```
+
+---
+
+# The output
+
+.small[
+
+
+```r
+summary(mod_disease)
+```
+
+```
+
+Call:
+glm(formula = status01 ~ treatment + age, family = binomial, 
+    data = dat)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-1.0310  -0.4902  -0.2835  -0.1952   2.5671  
+
+Coefficients:
+                  Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept)      -15.37334    3.53787  -4.345 1.39e-05 ***
+treatmenttreated  -0.95183    0.47818  -1.991 0.046534 *  
+age                0.06310    0.01623   3.889 0.000101 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 153.57  on 249  degrees of freedom
+Residual deviance: 132.89  on 247  degrees of freedom
+AIC: 138.89
+
+Number of Fisher Scoring iterations: 6
+```
+]
+
+---
+
+# The output
+
+.small[
+
+
+```r
+print(summary(mod_disease), digits = 2)
+```
+
+```
+
+Call:
+glm(formula = status01 ~ treatment + age, family = binomial, 
+    data = dat)
+
+Deviance Residuals: 
+   Min      1Q  Median      3Q     Max  
+ -1.03   -0.49   -0.28   -0.20    2.57  
+
+*Coefficients:
+*                 Estimate Std. Error z value Pr(&gt;|z|)    
+*(Intercept)       -15.373      3.538    -4.3    1e-05 ***
+*treatmenttreated   -0.952      0.478    -2.0     0.05 *  
+*age                 0.063      0.016     3.9    1e-04 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 153.57  on 249  degrees of freedom
+Residual deviance: 132.89  on 247  degrees of freedom
+AIC: 138.9
+
+Number of Fisher Scoring iterations: 6
+```
+]
+
+---
+
+# Interpreting the output
+
+The estimates = log(odds ratios)
+
+i.e. 
+
+`$$\frac{odds\ of\ outcome\ if\ have\ factor}{odds\ of\ outcome\ if\ dont\ have\ factor}$$`
+
+Lets get 'tidy output...
+
+
+```r
+tidy(mod_disease) #tidy from the broom package
+```
+
+```
+# A tibble: 3 x 5
+  term             estimate std.error statistic   p.value
+  &lt;chr&gt;               &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
+1 (Intercept)      -15.4       3.54       -4.35 0.0000139
+2 treatmenttreated  -0.952     0.478      -1.99 0.0465   
+3 age                0.0631    0.0162      3.89 0.000101 
+```
+
+So we get odds ratios by 'inverse logging them'.
+
+
+```r
+tidy(mod_disease) %&gt;% 
+  mutate(OR = exp(estimate))
+```
+
+```
+# A tibble: 3 x 6
+  term             estimate std.error statistic   p.value          OR
+  &lt;chr&gt;               &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;
+1 (Intercept)      -15.4       3.54       -4.35 0.0000139 0.000000211
+2 treatmenttreated  -0.952     0.478      -1.99 0.0465    0.386      
+3 age                0.0631    0.0162      3.89 0.000101  1.07       
+```
+
+---
+
+# A results table
+
+
+```r
+tidy(mod_disease) %&gt;%
+  mutate(OR = exp(estimate)) %&gt;% 
+    bind_cols(exp(confint(mod_disease)) %&gt;% 
+    as_tibble()
+  )
+```
+
+```
+Waiting for profiling to be done...
+```
+
+```
+# A tibble: 3 x 8
+  term      estimate std.error statistic p.value       OR  `2.5 %` `97.5 %`
+  &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
+1 (Interce… -15.4       3.54       -4.35 1.39e-5  2.11e-7 1.02e-10 0.000125
+2 treatmen…  -0.952     0.478      -1.99 4.65e-2  3.86e-1 1.48e- 1 0.980   
+3 age         0.0631    0.0162      3.89 1.01e-4  1.07e+0 1.03e+ 0 1.10    
+```
 
 ---
     </textarea>
