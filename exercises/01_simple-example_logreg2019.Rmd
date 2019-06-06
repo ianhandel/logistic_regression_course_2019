@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = TRUE,
                       comment = "")
 ```
 
-In this example we'll load a couple of handy packages. Then import an example dataset. Then we'll have a peek at the data. Next we'll see if sex is realted to disease status using first a Fisher's Exact test and then using logistic regression.
+In this example we'll load a couple of handy packages. Then import an example dataset. Then we'll have a peek at the data. Next we'll see if sex is related to disease status using first a Fisher's Exact test and then using logistic regression.
 
 
 First let's load the libraries we need and impoert the data. It's a CSV file so ```read_csv()``` is the function to use. ```head()``` and ```skim()`` from the skimr package give us a good preview of the dataset.
