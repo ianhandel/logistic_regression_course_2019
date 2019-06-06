@@ -240,86 +240,86 @@ $(document).ready(function () {
 </div>
 
 
-<p>In this example we’ll load a couple of handy packages. Then import an example dataset. Then we’ll have a peek at the data. Next we’ll see if sex is related to disease status using first a Fisher’s Exact test and then using logistic regression.</p>
+<p>In this example we’ll load a couple of handy packages. Then import an example dataset. Then we’ll have a peek at the data. Next we’ll see if treatment is related to disease status using first a Fisher’s Exact test and then using logistic regression.</p>
 <p>First let’s load the libraries we need and impoert the data. It’s a CSV file so <code>read_csv()</code> is the function to use. <code>head()</code> and `<code>skim()</code> from the skimr package give us a good preview of the dataset.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)
 <span class="kw">library</span>(skimr)
 dat &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;logreg_data_01_20190530.csv&quot;</span>)
 <span class="kw">head</span>(dat)
 <span class="kw">skim</span>(dat)</code></pre></div>
-<p>In this exercise we’ll just look at the status and sex columns. We can use <code>count</code> to tally up all the combinations and <code>group_by()</code> with <code>summarise()</code> to work out some percentages. Don’t worry if you don’t follow the details of the code but make sure you can see what it’s doing. Ask if you don’t!</p>
+<p>In this exercise we’ll just look at the status and treatment columns. We can use <code>count</code> to tally up all the combinations and <code>group_by()</code> with <code>summarise()</code> to work out some percentages. Don’t worry if you don’t follow the details of the code but make sure you can see what it’s doing. Ask if you don’t!</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dat <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">count</span>(sex, status)</code></pre></div>
 <pre><code># A tibble: 4 x 3
   sex    status       n
   &lt;chr&gt;  &lt;chr&gt;    &lt;int&gt;
-1 female diseased    31
-2 female healthy    225
-3 male   diseased    46
-4 male   healthy    198</code></pre>
+1 female diseased   178
+2 female healthy     59
+3 male   diseased   193
+4 male   healthy     70</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dat <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">group_by</span>(sex) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">group_by</span>(treatment) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">summarise</span>(<span class="dt">proportion_diseased =</span> <span class="kw">mean</span>(status <span class="op">==</span><span class="st"> &quot;diseased&quot;</span>))</code></pre></div>
 <pre><code># A tibble: 2 x 2
-  sex    proportion_diseased
-  &lt;chr&gt;                &lt;dbl&gt;
-1 female               0.121
-2 male                 0.189</code></pre>
+  treatment proportion_diseased
+  &lt;chr&gt;                   &lt;dbl&gt;
+1 control                 0.799
+2 treated                 0.699</code></pre>
 
 <div id="first-a-fishers-exact-test" class="section level2">
 <h2>First a Fishers Exact test</h2>
 <p>With 2 by 2 data like we have here (male and female vs diseased and healthy) we can use Pearson’s Chi Squared test or Fisher’s Exact test to see if the proportion of diseased animals is ‘significantly’ different in male animals vs females. We’ll use Fisher’s test here…</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">with</span>(dat,
-  <span class="kw">fisher.test</span>(status<span class="op">==</span><span class="st">&quot;diseased&quot;</span>, sex))</code></pre></div>
+  <span class="kw">fisher.test</span>(status<span class="op">==</span><span class="st">&quot;diseased&quot;</span>, treatment))</code></pre></div>
 <pre><code>
     Fisher's Exact Test for Count Data
 
-data:  status == &quot;diseased&quot; and sex
-p-value = 0.0469
+data:  status == &quot;diseased&quot; and treatment
+p-value = 0.01312
 alternative hypothesis: true odds ratio is not equal to 1
 95 percent confidence interval:
- 1.001627 2.863659
+ 0.3745856 0.9057437
 sample estimates:
 odds ratio 
-   1.68443 </code></pre>
+ 0.5854196 </code></pre>
 </div>
 <div id="now-try-with-logistic-regression" class="section level2">
 <h2>Now try with logistic regression</h2>
 <p>Now we can do the same thing with a simple logistic regression model. What we are doing with this is statistically modelling the log-odds of being diseased (vs healthy).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mod &lt;-<span class="st"> </span><span class="kw">glm</span>(status<span class="op">==</span><span class="st">&quot;diseased&quot;</span> <span class="op">~</span><span class="st"> </span>sex,
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mod &lt;-<span class="st"> </span><span class="kw">glm</span>(status<span class="op">==</span><span class="st">&quot;diseased&quot;</span> <span class="op">~</span><span class="st"> </span>treatment,
            <span class="dt">family =</span> binomial,
            <span class="dt">data =</span> dat)
 
 <span class="kw">summary</span>(mod)</code></pre></div>
 <pre><code>
 Call:
-glm(formula = status == &quot;diseased&quot; ~ sex, family = binomial, 
+glm(formula = status == &quot;diseased&quot; ~ treatment, family = binomial, 
     data = dat)
 
 Deviance Residuals: 
     Min       1Q   Median       3Q      Max  
--0.6464  -0.6464  -0.5081  -0.5081   2.0548  
+-1.7915  -1.5502   0.6698   0.8458   0.8458  
 
 Coefficients:
-            Estimate Std. Error z value Pr(&gt;|z|)    
-(Intercept)  -1.9821     0.1916 -10.346   &lt;2e-16 ***
-sexmale       0.5225     0.2520   2.074   0.0381 *  
+                 Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept)        1.3805     0.1706   8.092 5.87e-16 ***
+treatmenttreated  -0.5365     0.2138  -2.509   0.0121 *  
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
 (Dispersion parameter for binomial family taken to be 1)
 
-    Null deviance: 429.59  on 499  degrees of freedom
-Residual deviance: 425.21  on 498  degrees of freedom
-AIC: 429.21
+    Null deviance: 570.95  on 499  degrees of freedom
+Residual deviance: 564.48  on 498  degrees of freedom
+AIC: 568.48
 
 Number of Fisher Scoring iterations: 4</code></pre>
 <p>Have a look at the p-value and see if the conclusion from the logistic regression model is the same as for the Fisher’s Exact test.</p>
 <p>Now let’s get the odds ratio from the logistic regression model. Remmember logistic regression coefficients or estimates are ‘log odds-ratios’. So to get the odds ratio we inverse log them using the <code>exp()</code> function in R…</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">exp</span>(<span class="kw">coef</span>(mod))</code></pre></div>
-<pre><code>(Intercept)     sexmale 
-  0.1377778   1.6862170 </code></pre>
-<p>The result for sex gives us the ratio of odds of being diseased if male vs odds of being diseased if female.</p>
+<pre><code>     (Intercept) treatmenttreated 
+       3.9767442        0.5847953 </code></pre>
+<p>The result for sex gives us the ratio of odds of being diseased if treated vs odds of being diseased if female.</p>
 <p>Compare it to the answer you get from Fisher’s Exact test.</p>
 </div>
 

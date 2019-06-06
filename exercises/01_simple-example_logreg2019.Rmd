@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = TRUE,
                       comment = "")
 ```
 
-In this example we'll load a couple of handy packages. Then import an example dataset. Then we'll have a peek at the data. Next we'll see if sex is related to disease status using first a Fisher's Exact test and then using logistic regression.
+In this example we'll load a couple of handy packages. Then import an example dataset. Then we'll have a peek at the data. Next we'll see if treatment is related to disease status using first a Fisher's Exact test and then using logistic regression.
 
 
 First let's load the libraries we need and impoert the data. It's a CSV file so ```read_csv()``` is the function to use. ```head()``` and ```skim()`` from the skimr package give us a good preview of the dataset.
@@ -33,14 +33,14 @@ dat <- read_csv("logreg_data_01_20190530.csv")
 head(dat)
 skim(dat)
 ```
-In this exercise we'll just look at the status and sex columns. We can use ```count``` to tally up all the combinations and ```group_by()``` with ```summarise()``` to work out some percentages. Don't worry if you don't follow the details of the code but make sure you can see what it's doing. Ask if you don't!
+In this exercise we'll just look at the status and treatment columns. We can use ```count``` to tally up all the combinations and ```group_by()``` with ```summarise()``` to work out some percentages. Don't worry if you don't follow the details of the code but make sure you can see what it's doing. Ask if you don't!
 
 ```{r}
 dat %>% 
   count(sex, status)
 
 dat %>% 
-  group_by(sex) %>% 
+  group_by(treatment) %>% 
   summarise(proportion_diseased = mean(status == "diseased"))
 ```
 
@@ -52,7 +52,7 @@ With 2 by 2 data like we have here (male and female vs diseased and healthy) we 
 
 ```{r}
 with(dat,
-  fisher.test(status=="diseased", sex))
+  fisher.test(status=="diseased", treatment))
 ```
 
 ## Now try with logistic regression
@@ -61,7 +61,7 @@ Now we can do the same thing with a simple logistic regression model. What we ar
 
 
 ```{r}
-mod <- glm(status=="diseased" ~ sex,
+mod <- glm(status=="diseased" ~ treatment,
            family = binomial,
            data = dat)
 
@@ -75,7 +75,7 @@ Now let's get the odds ratio from the logistic regression model. Remmember logis
 ```{r}
 exp(coef(mod))
 ```
-The result for sex gives us the ratio of odds of being diseased if male vs odds of being diseased if female. 
+The result for sex gives us the ratio of odds of being diseased if treated vs odds of being diseased if female. 
 
 Compare it to the answer you get from Fisher's Exact test.
 

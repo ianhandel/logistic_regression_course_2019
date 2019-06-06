@@ -193,19 +193,19 @@ lm(formula = weight ~ age + sex, data = dat)
 
 Residuals:
    Min     1Q Median     3Q    Max 
- -3.54  -0.88  -0.02   0.89   3.07 
+ -4.49  -0.98   0.09   0.95   3.70 
 
 Coefficients:
             Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)  39.1901     0.7026      56   &lt;2e-16 ***
-age           0.1515     0.0033      46   &lt;2e-16 ***
-sexmale      22.2796     0.1136     196   &lt;2e-16 ***
+(Intercept)  39.2331     0.7430      53   &lt;2e-16 ***
+age           0.1511     0.0035      43   &lt;2e-16 ***
+sexmale      22.2003     0.1196     186   &lt;2e-16 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
 Residual standard error: 1.3 on 497 degrees of freedom
 Multiple R-squared:  0.99,	Adjusted R-squared:  0.99 
-F-statistic: 2e+04 on 2 and 497 DF,  p-value: &lt;2e-16
+F-statistic: 1.8e+04 on 2 and 497 DF,  p-value: &lt;2e-16
 ```
 
 ---
@@ -226,6 +226,7 @@ F-statistic: 2e+04 on 2 and 497 DF,  p-value: &lt;2e-16
    &lt;th style="text-align:left;"&gt; treatment &lt;/th&gt;
    &lt;th style="text-align:right;"&gt; age &lt;/th&gt;
    &lt;th style="text-align:left;"&gt; region &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; supp &lt;/th&gt;
    &lt;th style="text-align:left;"&gt; sex &lt;/th&gt;
    &lt;th style="text-align:right;"&gt; weight &lt;/th&gt;
    &lt;th style="text-align:left;"&gt; status &lt;/th&gt;
@@ -237,17 +238,19 @@ F-statistic: 2e+04 on 2 and 497 DF,  p-value: &lt;2e-16
    &lt;td style="text-align:left;"&gt; control &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 209 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; C &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; female &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 70.9 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; healthy &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 7.969148 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; male &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 93.4 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; diseased &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; A0468 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; treated &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 190 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; C &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; female &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 68.3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5.740540 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; male &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 87.8 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; healthy &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
@@ -255,26 +258,29 @@ F-statistic: 2e+04 on 2 and 497 DF,  p-value: &lt;2e-16
    &lt;td style="text-align:left;"&gt; control &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 239 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; B &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5.864910 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; female &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 73.7 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; diseased &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 74.0 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; healthy &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; A0413 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; control &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 235 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; D &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3.075370 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; male &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 97.8 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; healthy &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 97.0 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; diseased &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; A0319 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; control &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 197 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; B &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4.013347 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; male &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 89.1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 89.7 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; healthy &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
@@ -282,9 +288,10 @@ F-statistic: 2e+04 on 2 and 497 DF,  p-value: &lt;2e-16
    &lt;td style="text-align:left;"&gt; control &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 194 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; B &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 7.821795 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; female &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 69.7 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; healthy &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 69.1 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; diseased &lt;/td&gt;
   &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -306,13 +313,13 @@ __Status vs treatment__
 &lt;tbody&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; control &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 171 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 43 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 168 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; treated &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 34 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 255 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 200 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 86 &lt;/td&gt;
   &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -328,13 +335,13 @@ with(dat,
 	Fisher's Exact Test for Count Data
 
 data:  status and treatment
-p-value = 0.01175
+p-value = 0.01312
 alternative hypothesis: true odds ratio is not equal to 1
 95 percent confidence interval:
- 1.142387 3.238178
+ 1.104065 2.669617
 sample estimates:
 odds ratio 
-  1.917107 
+  1.708177 
 ```
 
 ---
@@ -351,6 +358,7 @@ How about recoding the outcome as 0/1?
    &lt;th style="text-align:left;"&gt; treatment &lt;/th&gt;
    &lt;th style="text-align:right;"&gt; age &lt;/th&gt;
    &lt;th style="text-align:left;"&gt; region &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; supp &lt;/th&gt;
    &lt;th style="text-align:left;"&gt; sex &lt;/th&gt;
    &lt;th style="text-align:right;"&gt; weight &lt;/th&gt;
    &lt;th style="text-align:left;"&gt; status &lt;/th&gt;
@@ -363,18 +371,20 @@ How about recoding the outcome as 0/1?
    &lt;td style="text-align:left;"&gt; control &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 209 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; C &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; female &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 70.9 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; healthy &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 7.969148 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; male &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 93.4 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; diseased &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; A0468 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; treated &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 190 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; C &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; female &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 68.3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5.740540 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; male &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 87.8 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; healthy &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
   &lt;/tr&gt;
@@ -383,28 +393,31 @@ How about recoding the outcome as 0/1?
    &lt;td style="text-align:left;"&gt; control &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 239 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; B &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5.864910 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; female &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 73.7 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; diseased &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 74.0 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; healthy &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; A0413 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; control &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 235 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; D &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3.075370 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; male &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 97.8 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; healthy &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 97.0 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; diseased &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; A0319 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; control &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 197 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; B &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4.013347 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; male &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 89.1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 89.7 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; healthy &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
   &lt;/tr&gt;
@@ -413,10 +426,11 @@ How about recoding the outcome as 0/1?
    &lt;td style="text-align:left;"&gt; control &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 194 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; B &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 7.821795 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; female &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 69.7 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; healthy &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 69.1 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; diseased &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
   &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -536,6 +550,7 @@ head(dat)
    &lt;th style="text-align:left;"&gt; treatment &lt;/th&gt;
    &lt;th style="text-align:right;"&gt; age &lt;/th&gt;
    &lt;th style="text-align:left;"&gt; region &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; supp &lt;/th&gt;
    &lt;th style="text-align:left;"&gt; sex &lt;/th&gt;
    &lt;th style="text-align:right;"&gt; weight &lt;/th&gt;
    &lt;th style="text-align:left;"&gt; status &lt;/th&gt;
@@ -548,28 +563,31 @@ head(dat)
    &lt;td style="text-align:left;"&gt; control &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 219 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; A &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; female &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 71.4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6.730799 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; male &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 94.9 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; diseased &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; A0002 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; control &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; treated &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 218 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; A &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; female &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 70.1 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; healthy &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 7.950240 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; male &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 94.4 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; diseased &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; A0003 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; treated &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 214 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; D &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; female &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 71.4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5.617446 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; male &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 93.5 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; healthy &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
   &lt;/tr&gt;
@@ -578,28 +596,31 @@ head(dat)
    &lt;td style="text-align:left;"&gt; treated &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 194 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; D &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; female &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 68.9 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; healthy &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.489726 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; male &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 88.4 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; diseased &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; A0005 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; control &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 185 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; D &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 7.126925 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; female &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 67.3 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; healthy &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 69.0 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; diseased &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; A0006 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; treated &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 235 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; D &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; male &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 98.6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4.882058 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; female &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 73.0 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; healthy &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
   &lt;/tr&gt;
@@ -639,21 +660,21 @@ glm(formula = status01 ~ treatment + age, family = binomial,
 
 Deviance Residuals: 
     Min       1Q   Median       3Q      Max  
--0.8300  -0.6054  -0.5320  -0.4210   2.2841  
+-1.9920  -1.3747   0.7024   0.7963   1.0162  
 
 Coefficients:
-                  Estimate Std. Error z value Pr(&gt;|z|)   
-(Intercept)      -5.074379   1.613819  -3.144  0.00166 **
-treatmenttreated -0.662589   0.251643  -2.633  0.00846 **
-age               0.017514   0.007521   2.329  0.01987 * 
+                  Estimate Std. Error z value Pr(&gt;|z|)  
+(Intercept)      -1.805954   1.275167  -1.416   0.1567  
+treatmenttreated -0.545371   0.215225  -2.534   0.0113 *
+age               0.015239   0.006081   2.506   0.0122 *
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
 (Dispersion parameter for binomial family taken to be 1)
 
-    Null deviance: 429.59  on 499  degrees of freedom
-Residual deviance: 417.16  on 497  degrees of freedom
-AIC: 423.16
+    Null deviance: 570.95  on 499  degrees of freedom
+Residual deviance: 558.11  on 497  degrees of freedom
+AIC: 564.11
 
 Number of Fisher Scoring iterations: 4
 ```
@@ -678,21 +699,21 @@ glm(formula = status01 ~ treatment + age, family = binomial,
 
 Deviance Residuals: 
    Min      1Q  Median      3Q     Max  
--0.830  -0.605  -0.532  -0.421   2.284  
+-1.992  -1.375   0.702   0.796   1.016  
 
 *Coefficients:
-*                 Estimate Std. Error z value Pr(&gt;|z|)   
-*(Intercept)      -5.07438    1.61382   -3.14   0.0017 **
-*treatmenttreated -0.66259    0.25164   -2.63   0.0085 **
-*age               0.01751    0.00752    2.33   0.0199 * 
+*                 Estimate Std. Error z value Pr(&gt;|z|)  
+*(Intercept)      -1.80595    1.27517   -1.42    0.157  
+*treatmenttreated -0.54537    0.21523   -2.53    0.011 *
+*age               0.01524    0.00608    2.51    0.012 *
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
 (Dispersion parameter for binomial family taken to be 1)
 
-    Null deviance: 429.59  on 499  degrees of freedom
-Residual deviance: 417.16  on 497  degrees of freedom
-AIC: 423.2
+    Null deviance: 570.95  on 499  degrees of freedom
+Residual deviance: 558.11  on 497  degrees of freedom
+AIC: 564.1
 
 Number of Fisher Scoring iterations: 4
 ```
@@ -713,9 +734,9 @@ tidy(mod_disease) #tidy from the broom package
 # A tibble: 3 x 5
   term             estimate std.error statistic p.value
   &lt;chr&gt;               &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
-1 (Intercept)       -5.07     1.61        -3.14 0.00166
-2 treatmenttreated  -0.663    0.252       -2.63 0.00846
-3 age                0.0175   0.00752      2.33 0.0199 
+1 (Intercept)       -1.81     1.28        -1.42  0.157 
+2 treatmenttreated  -0.545    0.215       -2.53  0.0113
+3 age                0.0152   0.00608      2.51  0.0122
 ```
 
 ---
@@ -743,8 +764,8 @@ tidy(mod_disease) %&gt;%
 # A tibble: 2 x 6
   term             estimate std.error statistic p.value    OR
   &lt;chr&gt;               &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;
-1 treatmenttreated  -0.663    0.252       -2.63 0.00846 0.516
-2 age                0.0175   0.00752      2.33 0.0199  1.02 
+1 treatmenttreated  -0.545    0.215       -2.53  0.0113 0.580
+2 age                0.0152   0.00608      2.51  0.0122 1.02 
 ```
 
 ---
@@ -776,17 +797,17 @@ tidy(mod_disease) %&gt;%
 &lt;tbody&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; treatmenttreated &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.516 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.313 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.842 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.008 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.580 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.378 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.880 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.011 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; age &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1.018 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.015 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 1.003 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1.033 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.020 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.028 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.012 &lt;/td&gt;
   &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -815,17 +836,17 @@ But what does it mean?
 &lt;tbody&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; treatmenttreated &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.516 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.313 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.842 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.008 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.580 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.378 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.880 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.011 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; age &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1.018 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.015 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 1.003 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1.033 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.020 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.028 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.012 &lt;/td&gt;
   &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -841,7 +862,7 @@ How many times greater the odds of outcome are __if__ the risk factor (etc) is p
 
 --
 
-So for the treatment variable (which can be control or treatment) the odds of disease if treated are 0.516 __times greater__ than if untreated (control).
+So for the treatment variable (which can be control or treatment) the odds of disease if treated are 0.58 __times greater__ than if untreated (control).
 
 ---
 
@@ -862,17 +883,17 @@ So for the treatment variable (which can be control or treatment) the odds of di
 &lt;tbody&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; treatmenttreated &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.516 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.313 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.842 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.008 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.580 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.378 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.880 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.011 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; age &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1.018 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.015 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 1.003 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1.033 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.020 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.028 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.012 &lt;/td&gt;
   &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -887,9 +908,9 @@ How many times greater the odds of outcome are for __each unit change__ in the v
 
 --
 
-So for the age variable the odds of disease are 1.018 __times greater__ for each day older.
+So for the age variable the odds of disease are 1.015 __times greater__ for each day older.
 
-So for 3 days it's 1.018 x 1.018 x 1.018 `\(\simeq\)` 1.055.
+So for 3 days it's 1.015 x 1.015 x 1.015 `\(\simeq\)` 1.046.
 
 
 ---

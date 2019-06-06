@@ -36,7 +36,7 @@ skim(dat)
 And this code fits a model and reports the odds ratios...
 
 ```{r}
-mod2 <- glm(status=="diseased" ~ sex + age,
+mod2 <- glm(status=="diseased" ~ treatment + age,
            family = binomial,
            data = dat)
 

@@ -16,6 +16,7 @@ dat <- tibble(ID = paste0("A", str_pad(1:N, 4, "left", 0)),
               treatment = sample(c("treated", "control"), N, TRUE),
               age = runif(N, 6 * days_in_month, 8 * days_in_month),
               region = sample(LETTERS[1:4], N, TRUE),
+              supp = runif(N, 0, 10),
               sex = sample(c("male", "female"), N, TRUE),
               weight = 50 +
                 age * 0.1 +
@@ -24,9 +25,10 @@ dat <- tibble(ID = paste0("A", str_pad(1:N, 4, "left", 0)),
                 (region == "C") * 0.2 +
                 rnorm(N, 0, 1),
               logit_p_disease = -1 +
-                (treatment == "treated") * -1.2 +
+                (treatment == "treated") * -1.9 +
                 (sex == "male") * 0.3 +
-                (age - 220) * 0.02,
+                (age - 220) * 0.02 +
+                (supp - 5) ^ 2,
               p_disease = inv.logit(logit_p_disease),
               status = c("healthy", "diseased")[rbernoulli(N, p_disease) + 1]) %>% 
   mutate(age = round(age),
@@ -46,7 +48,10 @@ fisher.test(dat$status == "diseased", dat$sex)
 fisher.test(dat$status == "diseased", dat$treatment)
 
 
-glm(status == "diseased" ~ age + sex + treatment, data = dat, family = "binomial") %>% 
+glm(status == "diseased" ~ age + sex + treatment + supp, data = dat, family = "binomial") %>% 
+  summary()
+
+glm(status == "diseased" ~ age  + treatment, data = dat, family = "binomial") %>% 
   summary()
 
 dat <- dat %>% 

@@ -32,19 +32,19 @@ dat <- read_csv("logreg_data_01_20190530.csv")
 head(dat)
 skim(dat)
 ```
-In the previous exercise we predicted status from sex. Now we are going to also consider the animals age and see if it is associated with the disease status.
+In the previous exercise we predicted status from treatment Now we are going to also consider the animals age and see if it is associated with the disease status.
 
-Our model with just sex was this...
+Our model with just treatment was this...
 
 ```{r}
-mod1 <- glm(status=="diseased" ~ sex,
+mod1 <- glm(status=="diseased" ~ treatment,
            family = binomial,
            data = dat)
 
 summary(mod1)
 ```
 
-If we focus on the coefficients and turn them into odds ratios the odds of disease are about `r round(exp(coef(mod1))[[2]])` times greater for males than females.
+If we focus on the coefficients and turn them into odds ratios the odds of disease are about `r round(exp(coef(mod1))[[2]])` times greater for treated than un-treated controls
 
 ```{r}
 exp(coef(mod1))
@@ -59,7 +59,7 @@ round(exp(coef(mod1)), 3)
 Just as we did with linear regression we can add other predictors.
 
 ```{r}
-mod2 <- glm(status=="diseased" ~ sex + age,
+mod2 <- glm(status=="diseased" ~ treatment + age,
            family = binomial,
            data = dat)
 
@@ -76,7 +76,7 @@ Note two things here...
 
 First we now have an odds ratio for age. It's `r age_mult <- round(exp(coef(mod2))[[3]], 3)`. This means that for every day older an animal is it's odds of disease (all else being equal) increase by `r age_mult` times. So an animal 4 days older has odds `r age_mult` x `r age_mult` x `r age_mult` = `r round(age_mult^3, 3)` times greater of being diseased. Ask if this isn't clear!
 
-Secondly the odds ratio of disease if male have changed from `r round(exp(coef(mod1)), 3)[[2]]` to `r round(exp(coef(mod2)), 3)[[2]]`.
+Secondly the odds ratio of disease if treated have changed from `r round(exp(coef(mod1)), 3)[[2]]` to `r round(exp(coef(mod2)), 3)[[2]]`.
 
 Why do you think this has happened?
 

@@ -247,81 +247,81 @@ $(document).ready(function () {
 dat &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;logreg_data_01_20190530.csv&quot;</span>)
 <span class="kw">head</span>(dat)
 <span class="kw">skim</span>(dat)</code></pre></div>
-<p>In the previous exercise we predicted status from sex. Now we are going to also consider the animals age and see if it is associated with the disease status.</p>
-<p>Our model with just sex was this…</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mod1 &lt;-<span class="st"> </span><span class="kw">glm</span>(status<span class="op">==</span><span class="st">&quot;diseased&quot;</span> <span class="op">~</span><span class="st"> </span>sex,
+<p>In the previous exercise we predicted status from treatment Now we are going to also consider the animals age and see if it is associated with the disease status.</p>
+<p>Our model with just treatment was this…</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mod1 &lt;-<span class="st"> </span><span class="kw">glm</span>(status<span class="op">==</span><span class="st">&quot;diseased&quot;</span> <span class="op">~</span><span class="st"> </span>treatment,
            <span class="dt">family =</span> binomial,
            <span class="dt">data =</span> dat)
 
 <span class="kw">summary</span>(mod1)</code></pre></div>
 <pre><code>
 Call:
-glm(formula = status == &quot;diseased&quot; ~ sex, family = binomial, 
+glm(formula = status == &quot;diseased&quot; ~ treatment, family = binomial, 
     data = dat)
 
 Deviance Residuals: 
     Min       1Q   Median       3Q      Max  
--0.6464  -0.6464  -0.5081  -0.5081   2.0548  
+-1.7915  -1.5502   0.6698   0.8458   0.8458  
 
 Coefficients:
-            Estimate Std. Error z value Pr(&gt;|z|)    
-(Intercept)  -1.9821     0.1916 -10.346   &lt;2e-16 ***
-sexmale       0.5225     0.2520   2.074   0.0381 *  
+                 Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept)        1.3805     0.1706   8.092 5.87e-16 ***
+treatmenttreated  -0.5365     0.2138  -2.509   0.0121 *  
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
 (Dispersion parameter for binomial family taken to be 1)
 
-    Null deviance: 429.59  on 499  degrees of freedom
-Residual deviance: 425.21  on 498  degrees of freedom
-AIC: 429.21
+    Null deviance: 570.95  on 499  degrees of freedom
+Residual deviance: 564.48  on 498  degrees of freedom
+AIC: 568.48
 
 Number of Fisher Scoring iterations: 4</code></pre>
-<p>If we focus on the coefficients and turn them into odds ratios the odds of disease are about 2 times greater for males than females.</p>
+<p>If we focus on the coefficients and turn them into odds ratios the odds of disease are about 1 times greater for treated than un-treated controls</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">exp</span>(<span class="kw">coef</span>(mod1))</code></pre></div>
-<pre><code>(Intercept)     sexmale 
-  0.1377778   1.6862170 </code></pre>
+<pre><code>     (Intercept) treatmenttreated 
+       3.9767442        0.5847953 </code></pre>
 <p>We can use <code>round(---, 3)</code> to round the numbers to 3 decimal places.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">round</span>(<span class="kw">exp</span>(<span class="kw">coef</span>(mod1)), <span class="dv">3</span>)</code></pre></div>
-<pre><code>(Intercept)     sexmale 
-      0.138       1.686 </code></pre>
+<pre><code>     (Intercept) treatmenttreated 
+           3.977            0.585 </code></pre>
 <p>Just as we did with linear regression we can add other predictors.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mod2 &lt;-<span class="st"> </span><span class="kw">glm</span>(status<span class="op">==</span><span class="st">&quot;diseased&quot;</span> <span class="op">~</span><span class="st"> </span>sex <span class="op">+</span><span class="st"> </span>age,
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mod2 &lt;-<span class="st"> </span><span class="kw">glm</span>(status<span class="op">==</span><span class="st">&quot;diseased&quot;</span> <span class="op">~</span><span class="st"> </span>treatment <span class="op">+</span><span class="st"> </span>age,
            <span class="dt">family =</span> binomial,
            <span class="dt">data =</span> dat)
 
 <span class="kw">summary</span>(mod2)</code></pre></div>
 <pre><code>
 Call:
-glm(formula = status == &quot;diseased&quot; ~ sex + age, family = binomial, 
+glm(formula = status == &quot;diseased&quot; ~ treatment + age, family = binomial, 
     data = dat)
 
 Deviance Residuals: 
     Min       1Q   Median       3Q      Max  
--0.7974  -0.6130  -0.5305  -0.4417   2.2852  
+-1.9920  -1.3747   0.7024   0.7963   1.0162  
 
 Coefficients:
-             Estimate Std. Error z value Pr(&gt;|z|)    
-(Intercept) -5.614894   1.603951  -3.501 0.000464 ***
-sexmale      0.525153   0.253320   2.073 0.038165 *  
-age          0.017112   0.007438   2.301 0.021420 *  
+                  Estimate Std. Error z value Pr(&gt;|z|)  
+(Intercept)      -1.805954   1.275167  -1.416   0.1567  
+treatmenttreated -0.545371   0.215225  -2.534   0.0113 *
+age               0.015239   0.006081   2.506   0.0122 *
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
 (Dispersion parameter for binomial family taken to be 1)
 
-    Null deviance: 429.59  on 499  degrees of freedom
-Residual deviance: 419.78  on 497  degrees of freedom
-AIC: 425.78
+    Null deviance: 570.95  on 499  degrees of freedom
+Residual deviance: 558.11  on 497  degrees of freedom
+AIC: 564.11
 
 Number of Fisher Scoring iterations: 4</code></pre>
 <p>Again we can look at the odds ratios…</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">round</span>(<span class="kw">exp</span>(<span class="kw">coef</span>(mod2)), <span class="dv">3</span>)</code></pre></div>
-<pre><code>(Intercept)     sexmale         age 
-      0.004       1.691       1.017 </code></pre>
+<pre><code>     (Intercept) treatmenttreated              age 
+           0.164            0.580            1.015 </code></pre>
 <p>Note two things here…</p>
-<p>First we now have an odds ratio for age. It’s . This means that for every day older an animal is it’s odds of disease (all else being equal) increase by 1.017 times. So an animal 4 days older has odds 1.017 x 1.017 x 1.017 = 1.052 times greater of being diseased. Ask if this isn’t clear!</p>
-<p>Secondly the odds ratio of disease if male have changed from 1.686 to 1.691.</p>
+<p>First we now have an odds ratio for age. It’s . This means that for every day older an animal is it’s odds of disease (all else being equal) increase by 1.015 times. So an animal 4 days older has odds 1.015 x 1.015 x 1.015 = 1.046 times greater of being diseased. Ask if this isn’t clear!</p>
+<p>Secondly the odds ratio of disease if treated have changed from 0.585 to 0.58.</p>
 <p>Why do you think this has happened?</p>
 
 

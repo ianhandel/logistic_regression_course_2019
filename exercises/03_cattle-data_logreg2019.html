@@ -248,38 +248,38 @@ dat &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="
 <span class="kw">head</span>(dat)
 <span class="kw">skim</span>(dat)</code></pre></div>
 <p>And this code fits a model and reports the odds ratios…</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mod2 &lt;-<span class="st"> </span><span class="kw">glm</span>(status<span class="op">==</span><span class="st">&quot;diseased&quot;</span> <span class="op">~</span><span class="st"> </span>sex <span class="op">+</span><span class="st"> </span>age,
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mod2 &lt;-<span class="st"> </span><span class="kw">glm</span>(status<span class="op">==</span><span class="st">&quot;diseased&quot;</span> <span class="op">~</span><span class="st"> </span>treatment <span class="op">+</span><span class="st"> </span>age,
            <span class="dt">family =</span> binomial,
            <span class="dt">data =</span> dat)
 
 <span class="kw">summary</span>(mod2)</code></pre></div>
 <pre><code>
 Call:
-glm(formula = status == &quot;diseased&quot; ~ sex + age, family = binomial, 
+glm(formula = status == &quot;diseased&quot; ~ treatment + age, family = binomial, 
     data = dat)
 
 Deviance Residuals: 
     Min       1Q   Median       3Q      Max  
--0.7974  -0.6130  -0.5305  -0.4417   2.2852  
+-1.9920  -1.3747   0.7024   0.7963   1.0162  
 
 Coefficients:
-             Estimate Std. Error z value Pr(&gt;|z|)    
-(Intercept) -5.614894   1.603951  -3.501 0.000464 ***
-sexmale      0.525153   0.253320   2.073 0.038165 *  
-age          0.017112   0.007438   2.301 0.021420 *  
+                  Estimate Std. Error z value Pr(&gt;|z|)  
+(Intercept)      -1.805954   1.275167  -1.416   0.1567  
+treatmenttreated -0.545371   0.215225  -2.534   0.0113 *
+age               0.015239   0.006081   2.506   0.0122 *
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
 (Dispersion parameter for binomial family taken to be 1)
 
-    Null deviance: 429.59  on 499  degrees of freedom
-Residual deviance: 419.78  on 497  degrees of freedom
-AIC: 425.78
+    Null deviance: 570.95  on 499  degrees of freedom
+Residual deviance: 558.11  on 497  degrees of freedom
+AIC: 564.11
 
 Number of Fisher Scoring iterations: 4</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">round</span>(<span class="kw">exp</span>(<span class="kw">coef</span>(mod2)), <span class="dv">3</span>)</code></pre></div>
-<pre><code>(Intercept)     sexmale         age 
-      0.004       1.691       1.017 </code></pre>
+<pre><code>     (Intercept) treatmenttreated              age 
+           0.164            0.580            1.015 </code></pre>
 <p>Now it’s over to you…</p>
 
 
