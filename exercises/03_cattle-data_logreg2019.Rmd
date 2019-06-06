@@ -1,0 +1,49 @@
+---
+title: "Exercise03 Over to you"
+author: "Ian Handel"
+date: "05/06/2019"
+output: 
+  html_document: 
+    highlight: haddock
+    theme: cerulean
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,
+                      comment = "")
+```
+
+Now you've looked at models with a single categorical variable and with an additional numerical variable have a further look at the example dataset trying the other variables to see which are associated with the disease status. Try models with several variables and look at the effect on the ofdds ratios.
+
+As a reminder this code loads in the data...
+
+```{r, eval=FALSE}
+library(tidyverse)
+library(skimr)
+dat <- read_csv("logreg_data_01_20190530.csvv")
+head(dat)
+skim(dat)
+```
+
+```{r, include=FALSE}
+library(tidyverse)
+library(skimr)
+dat <- read_csv("logreg_data_01_20190530.csv")
+head(dat)
+skim(dat)
+```
+
+And this code fits a model and reports the odds ratios...
+
+```{r}
+mod2 <- glm(status=="diseased" ~ sex + age,
+           family = binomial,
+           data = dat)
+
+summary(mod2)
+
+round(exp(coef(mod2)), 3)
+```
+
+Now it's over to you...
+

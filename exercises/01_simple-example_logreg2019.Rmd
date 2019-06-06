@@ -1,5 +1,5 @@
 ---
-title: "01 A simple example"
+title: "Exercise01 A simple example"
 author: "Ian Handel"
 date: "05/06/2019"
 output: 
