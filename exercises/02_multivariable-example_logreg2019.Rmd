@@ -1,0 +1,85 @@
+---
+title: "01 A simple example"
+author: "Ian Handel"
+date: "05/06/2019"
+output: 
+  html_document: 
+    highlight: haddock
+    theme: cerulean
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,
+                      comment = "")
+```
+
+This example builds on the previous one by adding a second predictor variable. 
+
+In case they're not loaded already let's load the libraries we need and import the data. 
+
+```{r, eval=FALSE}
+library(tidyverse)
+library(skimr)
+dat <- read_csv("logreg_data_01_20190530.csv")
+head(dat)
+skim(dat)
+```
+
+```{r, include=FALSE}
+library(tidyverse)
+library(skimr)
+dat <- read_csv("logreg_data_01_20190530.csv")
+head(dat)
+skim(dat)
+```
+In the previous exercise we predicted status from sex. Now we are going to also consider the animals age and see if it is associated with the disease status.
+
+Our model with just sex was this...
+
+```{r}
+mod1 <- glm(status=="diseased" ~ sex,
+           family = binomial,
+           data = dat)
+
+summary(mod1)
+```
+
+If we focus on the coefficients and turn them into odds ratios the odds of disease are about `r round(exp(coef(mod1))[[2]])` times greater for males than females.
+
+```{r}
+exp(coef(mod1))
+```
+
+We can use `round(---, 3)` to round the numbers to 3 decimal places. 
+
+```{r}
+round(exp(coef(mod1)), 3)
+```
+
+Just as we did with linear regression we can add other predictors.
+
+```{r}
+mod2 <- glm(status=="diseased" ~ sex + age,
+           family = binomial,
+           data = dat)
+
+summary(mod2)
+```
+
+Again we can look at the odds ratios...
+
+```{r}
+round(exp(coef(mod2)), 3)
+```
+
+Note two things here...
+
+First we now have an odds ratio for age. It's `r age_mult <- round(exp(coef(mod2))[[3]], 3)`. This means that for every day older an animal is it's odds of disease (all else being equal) increase by `r age_mult` times. So an animal 4 days older has odds `r age_mult` x `r age_mult` x `r age_mult` = `r round(age_mult^3, 3)` times greater of being diseased. Ask if this isn't clear!
+
+Secondly the odds ratio of disease if male have changed from `r round(exp(coef(mod1)), 3)[[2]]` to `r round(exp(coef(mod2)), 3)[[2]]`.
+
+Why do you think this has happened?
+
+
+
+

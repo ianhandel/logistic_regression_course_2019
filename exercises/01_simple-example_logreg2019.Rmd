@@ -1,0 +1,81 @@
+---
+title: "01 A simple example"
+author: "Ian Handel"
+date: "05/06/2019"
+output: 
+  html_document: 
+    highlight: haddock
+    theme: cerulean
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,
+                      comment = "")
+```
+
+In this example we'll load a couple of handy packages. Then import an example dataset. Then we'll have a peek at the data. Next we'll see if sex is realted to disease status using first a Fisher's Exact test and then using logistic regression.
+
+
+First let's load the libraries we need and impoert the data. It's a CSV file so ```read_csv()``` is the function to use. ```head()``` and ```skim()`` from the skimr package give us a good preview of the dataset.
+
+```{r, eval=FALSE}
+library(tidyverse)
+library(skimr)
+dat <- read_csv("logreg_data_01_20190530.csv")
+head(dat)
+skim(dat)
+```
+
+```{r, include=FALSE}
+library(tidyverse)
+library(skimr)
+dat <- read_csv("logreg_data_01_20190530.csv")
+head(dat)
+skim(dat)
+```
+In this exercise we'll just look at the status and sex columns. We can use ```count``` to tally up all the combinations and ```group_by()``` with ```summarise()``` to work out some percentages. Don't worry if you don't follow the details of the code but make sure you can see what it's doing. Ask if you don't!
+
+```{r}
+dat %>% 
+  count(sex, status)
+
+dat %>% 
+  group_by(sex) %>% 
+  summarise(proportion_diseased = mean(status == "diseased"))
+```
+
+\newpage
+
+## First a Fishers Exact test
+
+With 2 by 2 data like we have here (male and female vs diseased and healthy) we can use Pearson's Chi Squared test or Fisher's Exact test to see if the proportion of diseased animals is 'significantly' different in male animals vs females. We'll use Fisher's test here...
+
+```{r}
+with(dat,
+  fisher.test(status=="diseased", sex))
+```
+
+## Now try with logistic regression
+
+Now we can do the same thing with a simple logistic regression model. What we are doing with this is statistically modelling the log-odds of being diseased (vs healthy).
+
+
+```{r}
+mod <- glm(status=="diseased" ~ sex,
+           family = binomial,
+           data = dat)
+
+summary(mod)
+```
+Have a look at the p-value and see if the conclusion from the logistic regression model is the same as for the Fisher's Exact test.
+
+Now let's get the odds ratio from the logistic regression model. Remmember logistic regression coefficients or estimates are 'log odds-ratios'. So to get the odds ratio we inverse log them using the ```exp()``` function in R...
+
+
+```{r}
+exp(coef(mod))
+```
+The result for sex gives us the ratio of odds of being diseased if male vs odds of being diseased if female. 
+
+Compare it to the answer you get from Fisher's Exact test.
+

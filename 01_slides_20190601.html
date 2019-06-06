@@ -15,7 +15,6 @@ class: center, middle, inverse, title-slide
 
 # Logistic regression - an introdution
 ### Ian Handel
-### University of Edinburgh
 ### June 2019
 
 ---
@@ -194,19 +193,19 @@ lm(formula = weight ~ age + sex, data = dat)
 
 Residuals:
    Min     1Q Median     3Q    Max 
--3.025 -0.704  0.003  0.779  2.443 
+ -3.54  -0.88  -0.02   0.89   3.07 
 
 Coefficients:
             Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)  43.9666     0.8070      54   &lt;2e-16 ***
-age           0.1796     0.0039      46   &lt;2e-16 ***
-sexmale      11.0297     0.1384      80   &lt;2e-16 ***
+(Intercept)  39.1901     0.7026      56   &lt;2e-16 ***
+age           0.1515     0.0033      46   &lt;2e-16 ***
+sexmale      22.2796     0.1136     196   &lt;2e-16 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 1.1 on 247 degrees of freedom
-Multiple R-squared:  0.97,	Adjusted R-squared:  0.97 
-F-statistic: 4.5e+03 on 2 and 247 DF,  p-value: &lt;2e-16
+Residual standard error: 1.3 on 497 degrees of freedom
+Multiple R-squared:  0.99,	Adjusted R-squared:  0.99 
+F-statistic: 2e+04 on 2 and 497 DF,  p-value: &lt;2e-16
 ```
 
 ---
@@ -234,58 +233,58 @@ F-statistic: 4.5e+03 on 2 and 247 DF,  p-value: &lt;2e-16
  &lt;/thead&gt;
 &lt;tbody&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; A0049 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; A0458 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; control &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 226 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 209 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; C &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; female &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 84.8 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 70.9 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; healthy &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; A0229 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; A0468 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; treated &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 231 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; A &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; male &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 96.0 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; healthy &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; A0065 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; treated &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 211 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; A &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; male &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 92.5 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; diseased &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; A0153 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; treated &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 189 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 190 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; C &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; male &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 87.3 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; female &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 68.3 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; healthy &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; A0074 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; treated &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 214 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; C &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; male &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 93.4 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; diseased &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; A0228 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; A0143 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; control &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 226 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 239 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; B &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; female &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 73.7 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; diseased &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; A0413 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; control &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 235 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; D &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; male &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 96.7 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; diseased &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 97.8 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; healthy &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; A0319 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; control &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 197 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; B &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; male &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 89.1 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; healthy &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; A0257 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; control &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 194 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; B &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; female &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 69.7 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; healthy &lt;/td&gt;
   &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -307,13 +306,13 @@ __Status vs treatment__
 &lt;tbody&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; control &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 12 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 94 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 43 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 168 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; treated &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 11 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 133 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 34 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 255 &lt;/td&gt;
   &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -329,13 +328,13 @@ with(dat,
 	Fisher's Exact Test for Count Data
 
 data:  status and treatment
-p-value = 0.3781
+p-value = 0.01175
 alternative hypothesis: true odds ratio is not equal to 1
 95 percent confidence interval:
- 0.5941535 4.0350271
+ 1.142387 3.238178
 sample estimates:
 odds ratio 
-  1.540753 
+  1.917107 
 ```
 
 ---
@@ -360,64 +359,64 @@ How about recoding the outcome as 0/1?
  &lt;/thead&gt;
 &lt;tbody&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; A0049 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; A0458 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; control &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 226 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 209 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; C &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; female &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 84.8 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 70.9 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; healthy &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; A0229 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; A0468 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; treated &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 231 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; A &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; male &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 96.0 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; healthy &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; A0065 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; treated &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 211 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; A &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; male &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 92.5 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; diseased &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; A0153 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; treated &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 189 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 190 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; C &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; male &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 87.3 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; female &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 68.3 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; healthy &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; A0074 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; treated &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 214 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; C &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; male &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 93.4 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; diseased &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; A0228 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; A0143 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; control &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 226 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 239 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; B &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; female &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 73.7 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; diseased &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; A0413 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; control &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 235 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; D &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; male &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 96.7 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; diseased &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 97.8 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; healthy &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; A0319 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; control &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 197 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; B &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; male &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 89.1 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; healthy &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; A0257 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; control &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 194 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; B &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; female &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 69.7 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; healthy &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
   &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -546,61 +545,61 @@ head(dat)
 &lt;tbody&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; A0001 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; treated &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 218 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; D &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; control &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 219 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; A &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; female &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 80.9 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; healthy &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 71.4 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; diseased &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; A0002 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; treated &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 238 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; B &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; control &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 218 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; A &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; female &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 86.8 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 70.1 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; healthy &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; A0003 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; control &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 215 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; B &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; treated &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 214 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; D &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; female &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 83.4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 71.4 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; healthy &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; A0004 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; treated &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 237 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; A &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; male &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 99.5 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; diseased &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 194 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; D &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; female &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 68.9 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; healthy &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; A0005 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; treated &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 192 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; C &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; control &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 185 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; D &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; female &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 78.8 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 67.3 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; healthy &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; A0006 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; treated &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 186 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; A &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; female &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 79.3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 235 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; D &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; male &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 98.6 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; healthy &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
   &lt;/tr&gt;
@@ -640,23 +639,23 @@ glm(formula = status01 ~ treatment + age, family = binomial,
 
 Deviance Residuals: 
     Min       1Q   Median       3Q      Max  
--1.0310  -0.4902  -0.2835  -0.1952   2.5671  
+-0.8300  -0.6054  -0.5320  -0.4210   2.2841  
 
 Coefficients:
-                  Estimate Std. Error z value Pr(&gt;|z|)    
-(Intercept)      -15.37334    3.53787  -4.345 1.39e-05 ***
-treatmenttreated  -0.95183    0.47818  -1.991 0.046534 *  
-age                0.06310    0.01623   3.889 0.000101 ***
+                  Estimate Std. Error z value Pr(&gt;|z|)   
+(Intercept)      -5.074379   1.613819  -3.144  0.00166 **
+treatmenttreated -0.662589   0.251643  -2.633  0.00846 **
+age               0.017514   0.007521   2.329  0.01987 * 
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
 (Dispersion parameter for binomial family taken to be 1)
 
-    Null deviance: 153.57  on 249  degrees of freedom
-Residual deviance: 132.89  on 247  degrees of freedom
-AIC: 138.89
+    Null deviance: 429.59  on 499  degrees of freedom
+Residual deviance: 417.16  on 497  degrees of freedom
+AIC: 423.16
 
-Number of Fisher Scoring iterations: 6
+Number of Fisher Scoring iterations: 4
 ```
 ]
 
@@ -668,7 +667,7 @@ Number of Fisher Scoring iterations: 6
 
 
 ```r
-print(summary(mod_disease), digits = 2)
+print(summary(mod_disease), digits = 3)
 ```
 
 ```
@@ -679,23 +678,23 @@ glm(formula = status01 ~ treatment + age, family = binomial,
 
 Deviance Residuals: 
    Min      1Q  Median      3Q     Max  
- -1.03   -0.49   -0.28   -0.20    2.57  
+-0.830  -0.605  -0.532  -0.421   2.284  
 
 *Coefficients:
-*                 Estimate Std. Error z value Pr(&gt;|z|)    
-*(Intercept)       -15.373      3.538    -4.3    1e-05 ***
-*treatmenttreated   -0.952      0.478    -2.0     0.05 *  
-*age                 0.063      0.016     3.9    1e-04 ***
+*                 Estimate Std. Error z value Pr(&gt;|z|)   
+*(Intercept)      -5.07438    1.61382   -3.14   0.0017 **
+*treatmenttreated -0.66259    0.25164   -2.63   0.0085 **
+*age               0.01751    0.00752    2.33   0.0199 * 
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
 (Dispersion parameter for binomial family taken to be 1)
 
-    Null deviance: 153.57  on 249  degrees of freedom
-Residual deviance: 132.89  on 247  degrees of freedom
-AIC: 138.9
+    Null deviance: 429.59  on 499  degrees of freedom
+Residual deviance: 417.16  on 497  degrees of freedom
+AIC: 423.2
 
-Number of Fisher Scoring iterations: 6
+Number of Fisher Scoring iterations: 4
 ```
 ]
 
@@ -712,11 +711,11 @@ tidy(mod_disease) #tidy from the broom package
 
 ```
 # A tibble: 3 x 5
-  term             estimate std.error statistic   p.value
-  &lt;chr&gt;               &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
-1 (Intercept)      -15.4       3.54       -4.35 0.0000139
-2 treatmenttreated  -0.952     0.478      -1.99 0.0465   
-3 age                0.0631    0.0162      3.89 0.000101 
+  term             estimate std.error statistic p.value
+  &lt;chr&gt;               &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+1 (Intercept)       -5.07     1.61        -3.14 0.00166
+2 treatmenttreated  -0.663    0.252       -2.63 0.00846
+3 age                0.0175   0.00752      2.33 0.0199 
 ```
 
 ---
@@ -742,10 +741,10 @@ tidy(mod_disease) %&gt;%
 
 ```
 # A tibble: 2 x 6
-  term             estimate std.error statistic  p.value    OR
-  &lt;chr&gt;               &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;
-1 treatmenttreated  -0.952     0.478      -1.99 0.0465   0.386
-2 age                0.0631    0.0162      3.89 0.000101 1.07 
+  term             estimate std.error statistic p.value    OR
+  &lt;chr&gt;               &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;
+1 treatmenttreated  -0.663    0.252       -2.63 0.00846 0.516
+2 age                0.0175   0.00752      2.33 0.0199  1.02 
 ```
 
 ---
@@ -777,17 +776,17 @@ tidy(mod_disease) %&gt;%
 &lt;tbody&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; treatmenttreated &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.386 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.148 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.980 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.047 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.516 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.313 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.842 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.008 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; age &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1.065 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1.034 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1.103 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.018 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.003 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.033 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.020 &lt;/td&gt;
   &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -801,9 +800,97 @@ But what does it mean?
 
 # Interpreting the odds ratios
 
-### Numerical predictors
+.small[
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; term &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; OR &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; 2.5 % &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; 97.5 % &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; p.value &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; treatmenttreated &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.516 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.313 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.842 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.008 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; age &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.018 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.003 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.033 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.020 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+]
+
+### Odds ratios __multiply__
+
+
 
 ### Categorical predictors
+
+How many times greater the odds of outcome are __if__ the risk factor (etc) is present.
+
+--
+
+So for the treatment variable (which can be control or treatment) the odds of disease if treated are 0.516 __times greater__ than if untreated (control).
+
+---
+
+# Interpreting the odds ratios
+
+.small[
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; term &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; OR &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; 2.5 % &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; 97.5 % &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; p.value &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; treatmenttreated &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.516 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.313 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.842 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.008 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; age &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.018 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.003 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.033 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.020 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+]
+
+### Odds ratios __multiply__
+
+
+### Numerical predictors
+
+How many times greater the odds of outcome are for __each unit change__ in the variable
+
+--
+
+So for the age variable the odds of disease are 1.018 __times greater__ for each day older.
+
+So for 3 days it's 1.018 x 1.018 x 1.018 `\(\simeq\)` 1.055.
+
 
 ---
 
@@ -832,7 +919,7 @@ Disease risk might go up and then down
 Dohoo book
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
-<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="libs/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
 "highlightStyle": "github",
 "highlightLines": true,

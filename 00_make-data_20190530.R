@@ -6,7 +6,7 @@ library(boot) # for logit functions
 
 set.seed(4815)
 
-N <- 250
+N <- 500
 days_in_month <- 30
 
 # make some data
@@ -18,26 +18,20 @@ dat <- tibble(ID = paste0("A", str_pad(1:N, 4, "left", 0)),
               region = sample(LETTERS[1:4], N, TRUE),
               sex = sample(c("male", "female"), N, TRUE),
               weight = 50 +
-                age * 0.15 +
-                (sex == "male") * 0.7 +
-                + age * 0.05 * (sex == "male") +
+                age * 0.1 +
+                (sex == "male") * 1.2 +
+                + age * 0.1 * (sex == "male") +
                 (region == "C") * 0.2 +
                 rnorm(N, 0, 1),
-              logit_p_disease = -2 +
+              logit_p_disease = -1 +
                 (treatment == "treated") * -1.2 +
-                (sex == "male") * 0.5 +
-                (age - 220) * 0.05,
+                (sex == "male") * 0.3 +
+                (age - 220) * 0.02,
               p_disease = inv.logit(logit_p_disease),
               status = c("healthy", "diseased")[rbernoulli(N, p_disease) + 1]) %>% 
   mutate(age = round(age),
          weight = round(weight, 1)) %>% 
   mutate(treatment = if_else(sex == "male" & runif(N) > 0.80, "treated", treatment))
-
-
-# ggplot(dat) +
-#   aes(x = age, y = weight, colour = sex) +
-#   geom_point() +
-#   geom_smooth(method = "lm", se = FALSE)
 
 dat %>% 
   count(sex, treatment) %>% 
@@ -49,6 +43,9 @@ dat %>%
 
 fisher.test(dat$status == "diseased", dat$sex)
 
+fisher.test(dat$status == "diseased", dat$treatment)
+
+
 glm(status == "diseased" ~ age + sex + treatment, data = dat, family = "binomial") %>% 
   summary()
 
@@ -57,3 +54,5 @@ dat <- dat %>%
 
 
 write_csv(dat, here("logreg_course", "logreg_data_01_20190530.csv"))
+write_csv(dat, here("exercises", "logreg_data_01_20190530.csv"))
+
