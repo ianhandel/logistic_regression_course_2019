@@ -27,6 +27,6 @@ dat <- read_csv("logreg_data_01_20190530.csv")
 
 skim(dat)
 
-cattle <- read_csv("cattle_data.csv")
+wedd <- read_csv("weddingdata_2019.xlsx")
 
-skim(cattle)
+skim(wedd)
