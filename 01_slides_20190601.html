@@ -73,15 +73,8 @@ code.r.hljs.remark-code{
 
 
 ```r
-library(tidyverse)
-library(boot)
-library(broom)
-library(skimr)
-library(sjPlot)
-
-dat &lt;- read_csv("logreg_data_01_20190530.csv")
-
-skim(dat)
+install.packages("usethis")
+usethis::use_course("bit.ly/ian-logreg")
 ```
 
 
@@ -649,7 +642,7 @@ mod_disease &lt;- glm(status01 ~ treatment + age, family = binomial, data = dat)
 
 
 ```r
-summary(mod_disease)
+print(summary(mod_disease), digits = 3)
 ```
 
 ```
@@ -659,14 +652,14 @@ glm(formula = status01 ~ treatment + age, family = binomial,
     data = dat)
 
 Deviance Residuals: 
-    Min       1Q   Median       3Q      Max  
--1.9920  -1.3747   0.7024   0.7963   1.0162  
+   Min      1Q  Median      3Q     Max  
+-1.992  -1.375   0.702   0.796   1.016  
 
 Coefficients:
-                  Estimate Std. Error z value Pr(&gt;|z|)  
-(Intercept)      -1.805954   1.275167  -1.416   0.1567  
-treatmenttreated -0.545371   0.215225  -2.534   0.0113 *
-age               0.015239   0.006081   2.506   0.0122 *
+                 Estimate Std. Error z value Pr(&gt;|z|)  
+(Intercept)      -1.80595    1.27517   -1.42    0.157  
+treatmenttreated -0.54537    0.21523   -2.53    0.011 *
+age               0.01524    0.00608    2.51    0.012 *
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
@@ -674,7 +667,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
     Null deviance: 570.95  on 499  degrees of freedom
 Residual deviance: 558.11  on 497  degrees of freedom
-AIC: 564.11
+AIC: 564.1
 
 Number of Fisher Scoring iterations: 4
 ```
@@ -776,11 +769,11 @@ tidy(mod_disease) %&gt;%
 ```r
 tidy(mod_disease) %&gt;%
   mutate(OR = exp(estimate)) %&gt;% 
-    bind_cols(exp(confint(mod_disease)) %&gt;% 
+    bind_cols(exp(confint_tidy(mod_disease)) %&gt;% 
     as_tibble()
   ) %&gt;% 
   filter(term != "(Intercept)") %&gt;% 
-  select(term, OR, `2.5 %`, `97.5 %`, p.value)
+  select(term, OR, `conf.low`, `conf.high`, p.value)
 ```
 .small[
 
@@ -789,8 +782,8 @@ tidy(mod_disease) %&gt;%
   &lt;tr&gt;
    &lt;th style="text-align:left;"&gt; term &lt;/th&gt;
    &lt;th style="text-align:right;"&gt; OR &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; 2.5 % &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; 97.5 % &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; conf.low &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; conf.high &lt;/th&gt;
    &lt;th style="text-align:right;"&gt; p.value &lt;/th&gt;
   &lt;/tr&gt;
  &lt;/thead&gt;
@@ -935,9 +928,13 @@ Disease risk might go up and then down
 
 ---
 
+# Model selection - a blank page
+
+---
+
 # More help
 
-Dohoo book
+Veterinary Epi Reasearch - Ian Dahoo
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="libs/remark-latest.min.js"></script>

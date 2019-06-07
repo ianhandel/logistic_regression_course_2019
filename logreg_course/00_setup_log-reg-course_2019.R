@@ -20,6 +20,7 @@ install_if_missing("boot")
 install_if_missing("broom")
 install_if_missing("skimr")
 install_if_missing("sjPlot")
+install_if_missing("finalfit")
 
 dat <- read_csv("logreg_data_01_20190530.csv")
 

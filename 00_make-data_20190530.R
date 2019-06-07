@@ -16,7 +16,7 @@ dat <- tibble(ID = paste0("A", str_pad(1:N, 4, "left", 0)),
               treatment = sample(c("treated", "control"), N, TRUE),
               age = runif(N, 6 * days_in_month, 8 * days_in_month),
               region = sample(LETTERS[1:4], N, TRUE),
-              supp = runif(N, 0, 10),
+              supp = round(runif(N, 0, 10),3),
               sex = sample(c("male", "female"), N, TRUE),
               weight = 50 +
                 age * 0.1 +
