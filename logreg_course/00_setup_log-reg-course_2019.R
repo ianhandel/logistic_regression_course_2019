@@ -27,6 +27,6 @@ dat <- read_csv("logreg_data_01_20190530.csv")
 
 skim(dat)
 
-wedd <- read_csv("weddingdata_2019.xlsx")
+wedd <- readxl::read_excel("weddingdata_2019.xlsx")
 
 skim(wedd)
