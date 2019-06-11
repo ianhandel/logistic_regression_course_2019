@@ -19,11 +19,10 @@ dat <- tibble(ID = paste0("A", str_pad(1:N, 4, "left", 0)),
               supp = round(runif(N, 0, 10),3),
               sex = sample(c("male", "female"), N, TRUE),
               weight = 50 +
-                age * 0.1 +
-                (sex == "male") * 1.2 +
-                + age * 0.1 * (sex == "male") +
+                age * 0.12 +
+                (sex == "male") * 3.5 +
                 (region == "C") * 0.2 +
-                rnorm(N, 0, 1),
+                rnorm(N, 0, 0.75),
               logit_p_disease = -1 +
                 (treatment == "treated") * -1.9 +
                 (sex == "male") * 0.3 +
@@ -60,4 +59,6 @@ dat <- dat %>%
 
 write_csv(dat, here("logreg_course", "logreg_data_01_20190530.csv"))
 write_csv(dat, here("exercises", "logreg_data_01_20190530.csv"))
+write_csv(dat, here("logreg_data_01_20190530.csv"))
+
 
