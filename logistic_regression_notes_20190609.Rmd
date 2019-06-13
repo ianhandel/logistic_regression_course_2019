@@ -2,17 +2,8 @@
 title: "Logistic regression - introduction"
 author: "Ian Handel"
 date: "`r Sys.Date()`"
-output:
-  pdf_document:
-    df_print: paged
-    
+output: tufte::tufte_handout
 ---
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
-
 
 ```{r, include= FALSE}
 library(tidyverse)
@@ -24,7 +15,7 @@ library(sjPlot)
 
 set.seed(42)
 opts_chunk$set(comment = "", error = FALSE)
-
+library(tufte)
 purple <- "#CAB2D6"
 ```
 
@@ -59,6 +50,7 @@ install.packages("boot")
 install.packages("broom")
 install.packages("skimr")
 install.packages("sjPlot")
+install.packages("kableExtra")
 ```
 
 Start a new project in rstudio and in an rscript use the floowing code to load the libraries you need and to import/load the data...
@@ -71,6 +63,7 @@ library(boot)
 library(broom)
 library(skimr)
 library(sjPlot)
+library(kableExtra)
 ```
 
 Loading the data  (from the csv file on Basecamp)...
@@ -159,9 +152,9 @@ $$1/5 = 0.2$$
 
 # Linear regression
 
-Remember that linear regression is a statistical method that lets us understand and predict numerical outcomes using one or more predictor variables. The predictor variables may be numerical or categorical. Linear regression also assumes there's a linear i.e. straight line relationship between the predictor numerical variable sand the outcome. Using the data set we have loaded...
+Remember that linear regression is a statistical method that lets us understand and predict numerical outcomes using one or more predictor variables. The predictor variables may be numerical or categorical. Linear regression also assumes there's a linear i.e. straight line relationship between the predictor numerical variable sand the outcome. Using the data set we have loaded we can plot weight against age and sex and see that there looks to be a linear relationship between age and weight for each sex...
 
-```{r, include = FALSE}
+```{r, fig.width=4, fig.height=3}
 fig1 <- ggplot(dat) +
   aes(age, weight, colour = sex) +
   geom_point(shape = 1) +
@@ -172,13 +165,11 @@ fig1 <- ggplot(dat) +
        x = "Age (days)",
        y = "Weight (Kg)",
        colour = "Sex")
-```
 
-```{r, echo = FALSE,fig.width=4, fig.height=3}
 print(fig1)
 ```
 
-In R we can use the ```lm()``` function to fit linear models. Normally we would store the results of using the function in an R object and look at it using ``summary()`. We can also get a tidier output using ```get_model_data()``` from the ```sjPlot``` package. Here we make a linear model predicting the animal's weight from their age (a numerical variable) and their sex (a categorical variable).
+In R we can use the ```lm()``` function to fit a linear model to this data. Normally we store the results of using the function in an R object and look at it using ``summary()`. We can also get a tidier output using ```get_model_data()``` from the ```sjPlot``` package. Here we make a linear model predicting the animal's weight from their age (a numerical variable) and their sex (a categorical variable).
 
 ```{r}
 mod1 <- lm(weight ~ age + sex, data = dat)
@@ -204,29 +195,21 @@ The analysis suggestes that both __age__ and __sex__ are significant predcitors 
 
 # Analysing binary data
 
-### Binary data common in epidemiology e.g.
-
-- alive/dead
-- healthy/diseased
-
+Binary data common in epidemiology e.g. disease status (diseased or healthy), life (alive or dead) etc. In the example dataset we have the column `status` where animals can be either __healthy__ or __diseased__.
 
 ```{r, echo = FALSE}
 dat %>% 
   sample_n(6) %>% 
-  kable(format = "html", caption = "Example data")
+  kable(format = "latex", caption = "Example data")
 ```
 
+As we know that some animals were treated with an anthelmintic and some were not it may be interesting to look at the number of healhty and diseased animals in the treated and control (untreated) groups...
 
-
-# Univariable analysis
-
-__Status vs treatment__
-
-```{r, echo = FALSE}
+```{r, echo = FALSE, fig.cap="Disease status vs treatment"}
 dat %>% 
   count(treatment, status) %>% 
   spread(status, n) %>% 
-  kable(format = "html")
+  kable(format = "latex")
 ```
 
 ```{r}
@@ -274,14 +257,14 @@ p
 
 # Linear regression 2
 
-```{r, echo = FALSE, fig.height=3}
+```{r, echo = FALSE, fig.width=4, fig.height=3}
 p +
   geom_smooth(method = "lm", se = FALSE, lwd = 0.5)
 ```
 
 
 
-### Problems
+## Problems
 
 
 
@@ -305,9 +288,9 @@ The outcome, $weight$, is related to the predictors
 
 by one or more straight lines.
 
-![](figures/lin_regression_plot.png)
-
-
+```{r, fig.width=5, fig.height=4}
+print(fig1)
+```
 
 __For binary data we want__
 
@@ -317,23 +300,15 @@ So rather than modelling the outcome.
 
 We model the __probability__ of something e.g. being diseased...
 
-
-
 # The logistic bit...
 
 Linear regression models model numbers, any numbers!
 
 Probabilities go from...
 
-
-
 0 to 1
 
-
-
 So we need to turn any number into 0 - 1
-
-
 
 ```{r, echo = FALSE, fig.height=3, fig.width=4, fig.align='center'}
 tibble(y = seq(-10, 10, 0.1),
@@ -350,8 +325,6 @@ tibble(y = seq(-10, 10, 0.1),
 
 In fact the regression value is the log of the odds of the outcome.
 
-
-
 #The logistic bit 2
 
 So we have an outcome, e.g. being diseased vs healthy, that is coded 0 or 1
@@ -366,10 +339,6 @@ or in english
 __The log of the odds of an animal being diseased are modelled by a linear combination of the predictor variables__
 
 
-
-
-class: inverse, middle, center
-
 # Worked example in R
 
 
@@ -383,7 +352,7 @@ head(dat)
 
 ```{r, echo = FALSE}
 head(dat) %>% 
-  kable(format = "html") %>% 
+  kable(format = "latex") %>% 
   kable_styling(font_size = 8)
 ```
 
@@ -490,15 +459,15 @@ tidy(mod_disease) %>%
   ) %>% 
   filter(term != "(Intercept)") %>% 
   select(term, OR, `2.5 %`, `97.5 %`, p.value) %>% 
-  kable(format = "html", digits = 3)
+  kable(format = "latex", digits = 3)
 ```
 
 
-### Odds ratios __multiply__
+## Odds ratios __multiply__
 
 
 
-### Categorical predictors
+## Categorical predictors
 
 How many times greater the odds of outcome are __if__ the risk factor (etc) is present.
 
@@ -518,14 +487,14 @@ tidy(mod_disease) %>%
   ) %>% 
   filter(term != "(Intercept)") %>% 
   select(term, OR, `2.5 %`, `97.5 %`, p.value) %>% 
-  kable(format = "html", digits = 3)
+  kable(format = "latex", digits = 3)
 ```
 
 
-### Odds ratios __multiply__
+## Odds ratios __multiply__
 
 
-### Numerical predictors
+## Numerical predictors
 
 How many times greater the odds of outcome are for __each unit change__ in the variable
 
@@ -540,19 +509,19 @@ So for 3 days it's `r round(exp(coef(mod_disease))[[3]], 3)` x `r round(exp(coef
 
 # Things to watch out for
 
-### Factor levels
+## Factor levels
 
 How does R know if you are predicting 'healthy' or 'diseased'?
 
 
 
-### Perfect predictors
+## Perfect predictors
 
 E.g. all the males are diseased and all the females are healthy
 
 
 
-### Linear on logit
+## Linear on logit
 
 Disease risk might go up and then down
 
