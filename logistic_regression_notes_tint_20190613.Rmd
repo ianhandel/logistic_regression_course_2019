@@ -256,14 +256,15 @@ The Fisher's exact test reports a p-value, in this case `r with(dat,{{fisher.tes
 
 # Multivariable analysis
 
-We could convert out `status` column to a number coding healhty animals as __0__ and diseased animals as __1__ and then use conventional linear regression with the variables we want to consider as predictors. The following code will make a new column, `status01` recoding status to a number. `r margin_note("To understand how this works remember that == in R compares things and if they are the same returns TRUE andf if they aren't returns FALSE. Then as.numeric() will convert FALSE to a 0 and TRUE to 1. It's a handy way of making binary text /factor data into 0's and 1's")`
+We could convert out `status` column to a number coding healhty animals as __0__ and diseased animals as __1__ and then use conventional linear regression with the variables we want to consider as predictors. The following code will make a new column, `status01` recoding status to a number.
+
 
 ```{r, eval = FALSE}
 dat <- dat %>%
   mutate(status01 = as.numeric(status == "diseased"))
 ```
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, fig.fullwidth = TRUE}
 dat <- dat %>%
   mutate(status01 = as.numeric(status == "diseased"))
 
@@ -271,10 +272,13 @@ dat %>%
   head(4) %>% 
   kable(format = "latex")
 ```
-\break
+\break 
+
+`r margin_note("To understand how this works remember that == in R compares things and if they are the same returns TRUE andf if they aren't returns FALSE. Then as.numeric() will convert FALSE to a 0 and TRUE to 1. It's a handy way of making binary text /factor data into 0's and 1's")`
+
 Now we have converted the binary data into a number (0 or 1) we __could__ try using linear regression. First, to help understand what we are trying here, we can plot the outcome against the treatment group and age of the animals we see this...
 
-```{r, fig.cap = "Status vs Age and treatment", fig.height=3, fig.width=6, fig.fullwidth = TRUE, out.height='30%'}
+```{r, fig.cap = "Status vs Age and treatment", fig.height=3, fig.width=6, out.height='30%'}
 ggplot(dat) +
   aes(age, status01, colour = treatment) +
   geom_point(shape = 1) +
@@ -317,8 +321,138 @@ dat %>%
 
 ```
 \break
-Our outomce can only be __0__ i.e. __healhty__ or __1__ i.e. __diseased__. However our linear mode is predicting numbers inbetween. In some circumstances trying to use a linear model to predict binary 0/1/ data will even give values less than zero and more than one. We need to re-think the regression approach so that our model makes sense with an outcomethat can only be __0__ or __1__ (or healhty / diseased etc) 
+Our outcome can only be __0__ i.e. __healhty__ or __1__ i.e. __diseased__. However our linear mode is predicting numbers in between. In some circumstances trying to use a linear model to predict binary 0/1/ data will even give values less than zero and more than one. We need to re-think the regression approach so that our model makes sense with an outcome that can only be __0__ or __1__ (or healthy / diseased etc). `r margin_note("Note: In some circumstances using a linear model with a 0/1 outcome is a sensible strategy. It's called a 'linear probability model'. You'll see it used by economists. However we'd suggest you use logistic regression unless you are sure that a linear model with bianry outcokes is correct!")`
 
+We do this in logistic regression by making a model that estimates the __probability__ of an animal having the outcome. Remembering that probabilities can take a value between __0__ and __1__ we modify the linear regression model so that its predictions lie only between 0 and 1. As linear regression can produce numbers ranging from hugely negative (negative infinity in fact) to hugely postivie (positive infinity) we use a __logit__ function.
+\break
+
+Here's a plot of what it does...
+
+`r margin_note("Mathematically the regression value is $log_e(\\frac{P}{1-P})$ where $P$ is the probability of the outsome. Understanding this isn't critical but if you want to read more about this look at the logistic regression chapter in the Dahoo book (see references)")`
+
+```{r, echo = FALSE, fig.height=3, fig.width=4}
+tibble(y = seq(-10, 10, 0.1),
+       prob = boot::inv.logit(y)) %>% 
+  ggplot() +
+  aes(y, prob) +
+  geom_line(colour = purple, lwd = 2) +
+  labs(x = "linear regression value",
+       y = "probability") +
+  theme_bw(base_size = 12)
+```
+\break
+It's turning a number (in this case from -10 to 10) into a probability that can __only__ range from 0 to 1. If we expanded the range of numbers to be from minus infinity to plus infinity the probability would still only go from 0 to 1. The number is infact the 'log' odds of the event. Logs of odds can range from - infinity to + infinity - because odds can range from 0 to infinity [Don't worry if you don't follow that maths!].
+
+
+#The logistic regression models
+
+So we use this logistic function together with a linear regression model to build a model that predicts the probability of an oucome given one or more precitor variables. The linear model bit generates a number from - infinity to + infinity and this is turned into a probaility (0 - 1). So a model for disease based on age and treatment mathematically looks like this...
+
+$$ log_e(\frac{prob}{1 - prob}) \sim \beta_0 + \beta_1 age + \beta_2 treatment) $$
+
+
+Or in words: The log of the odds of an animal being diseased are modelled by a linear combination of the predictor variables.
+
+Let's look at a worked example usiong the data we have loaded...
+
+\break
+
+# Worked example in R
+
+First a reminder about the data structure...
+
+```{r, eval= FALSE}
+head(dat)
+```
+
+
+```{r, echo = FALSE}
+head(dat) %>% 
+  kable(format = "latex")
+```
+\break
+
+We specifiy logistic regression models in R using the `glm()` function. Just like in a linear model we have the outcome on the left hand side of the formula and the predictors on the right. We need to add an argument `family = binomial` to tell R to do logistic regression. We store the model in an object. Just like in linear regression...
+
+```{r}
+mod_disease <- glm(status01 ~ treatment + age, family = binomial, data = dat)
+```
+
+We can look at a summary of the model output using `summary()`...
+
+```{r, eval = FALSE}
+print(summary(mod_disease), digits = 3)
+```
+
+\small
+
+```{r, echo = FALSE}
+print(summary(mod_disease), digits = 3)
+```
+
+\normalsize
+
+
+
+# odds ratios
+
+The estimates = log(odds ratios)
+
+i.e. 
+
+$$\frac{odds\ of\ outcome\ if\ have\ factor}{odds\ of\ outcome\ if\ dont\ have\ factor}$$
+
+So we get odds ratios by 'inverse logging them'.
+
+Usng the `get_model_data()` function from the `sjPlot` package...
+```{r}
+get_model_data(mod_disease) 
+```
+
+But what does it mean?
+
+
+# Interpreting the odds ratios
+
+
+## Odds ratios __multiply__
+
+## Categorical predictors
+
+How many times greater the odds of outcome are __if__ the risk factor (etc) is present.
+
+
+
+So for the treatment variable (which can be control or treatment) the odds of disease if treated are `r round(exp(coef(mod_disease))[[2]], 3)` __times greater__ than if untreated (control).
+
+
+
+# Interpreting the odds ratios
+
+```{r, echo = FALSE, message=FALSE}
+tidy(mod_disease) %>%
+  mutate(OR = exp(estimate)) %>% 
+    bind_cols(exp(confint(mod_disease)) %>% 
+    as_tibble()
+  ) %>% 
+  filter(term != "(Intercept)") %>% 
+  select(term, OR, `2.5 %`, `97.5 %`, p.value) %>% 
+  kable(format = "latex", digits = 3)
+```
+
+
+## Odds ratios __multiply__
+
+
+## Numerical predictors
+
+How many times greater the odds of outcome are for __each unit change__ in the variable
+
+
+
+So for the age variable the odds of disease are `r round(exp(coef(mod_disease))[[3]], 3)` __times greater__ for each day older.
+
+So for 3 days it's `r round(exp(coef(mod_disease))[[3]], 3)` x `r round(exp(coef(mod_disease))[[3]], 3)` x `r round(exp(coef(mod_disease))[[3]], 3)` $\simeq$ `r round(exp(coef(mod_disease))[[3]], 3)^3 %>% round(3)`.
 
 
 

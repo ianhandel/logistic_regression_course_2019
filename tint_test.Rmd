@@ -1,6 +1,7 @@
 ---
-title: "Logistic regression - introduction"
-author: "Ian Handel"
+title: "Tint Is Not Tufte"
+subtitle: "An implementation in R Markdown"
+author: "JJ Allaire, Yihui Xie, Dirk Eddelbuettel"
 date: "`r Sys.Date()`"
 output: tint::tintPdf
 bibliography: skeleton.bib
