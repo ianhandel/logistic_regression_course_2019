@@ -27,7 +27,7 @@ dat <- tibble(ID = paste0("A", str_pad(1:N, 4, "left", 0)),
                 (treatment == "treated") * -1.9 +
                 (sex == "male") * 0.3 +
                 (age - 220) * 0.02 +
-                (supp - 5) ^ 2,
+                ((supp - 5) ^ 2)/10,
               p_disease = inv.logit(logit_p_disease),
               status = c("healthy", "diseased")[rbernoulli(N, p_disease) + 1]) %>% 
   mutate(age = round(age),

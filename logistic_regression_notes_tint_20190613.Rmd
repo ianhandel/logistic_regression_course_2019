@@ -420,17 +420,105 @@ And here they mean 'hw many times greater the odds of outcome are for __each uni
 
 ## Factor levels
 
-How does R know if you are predicting 'healthy' or 'diseased'?
+__How does R know if you are predicting 'healthy' or 'diseased'?__ In our example above we usd the code `as.numeric(status == "diseased")` to convert 'diseased' into 1 and 'healthy' into 0. That way 'diseased became our outcome of interest. There are other ways such as using `... glm(status == "diseased" ~ ...` in the model code. Whatever you do make sure youy are predicting the outcome of interest. otherwise your odds ratios estimates will be opposite!
+
+Also when you have a categorical predictor the odds ratio estimate will be the odds of the outcome if the predictor takes a certain level compared to it being the 'reference' level. Imagine a simple model predictong disease status from regio using the example data...
+
+```{r}
+mod_region  <- glm(status01 ~ region,
+                   family = binomial,
+                   data = dat)
+
+get_model_data(mod_region) %>% 
+  select(term:p.stars)
+```
+
+The estimates for regions B to D are the odds of diseased if in that region compared to the odds of disease in region A. region A is the __reference__ region. By deafult R will choose the first level in a categorical or factor variable. Unles you instruct otherwise these will normally be the first in alhpaebtical order. Sometimes it makes sense to choose a diffeent reference level. There are several thing to comnsider but generally we'd advise taht you choose a refrenece level that has plamnty of observations. If three levels had 100 obseravtions and one level had just 3 it would be a poor choice as a reference level as we would be comparing disaese rates to a level with great uncertainty. Also try and choose a refrence level that readers will find useful. If you were lookignm at breed risks then choosing a common, well-know breed as a refrence level makes sense and helps your readers. To change the refrence level use this code...
+
+```{r}
+# Change the reference level in region to 'C'
+# uses the fct_relevel function from tidyverse/forcats package
+
+dat <- dat %>% 
+  mutate(region = fct_relevel(region, "C"))
+
+
+mod_region  <- glm(status01 ~ region,
+                   family = binomial,
+                   data = dat)
+
+get_model_data(mod_region) %>% 
+  select(term:p.stars)
+```
+
+You'll see that the regions are all comapred back to region C!
 
 ## Perfect predictors
 
-E.g. all the males are diseased and all the females are healthy
+Sometimes a variable is a prefect predictor of the outcome of interest. An example would be where all the animals of one breed or sex were diseased (none were healthy). If we use conventional logistic regression modelling to estimate the odds ratios we may see strange results. A typical warning sign is that the standard erros are hundres and thousands and the confidence intervals for the odds ratio are massive. If you see this do a table to check the realtionship between outcome and predictor. If you have a perfect predictor you either need to seek further statistical help or do some in-depth reading. Teh `logistf` package in R can sometimes help but we'd advise you carefully read before using it. Here's an article on it (https://www.r-bloggers.com/example-8-15-firth-logistic-regression/)   
 
-## Linear on logit
+## Non-linear predictors
 
-Disease risk might go up and then down
+For numerical predictors we are assuming that for each unit increase in the numerical predictor the odds of the outcome multiply the same amount. E.g. for every extral metre of altitude the odds of disease increase or decrease by X times where X is the odds ratio from out model output. If we use numerical predcitor in out model we should check this as somethimes it's not the case. For example a drug with toxic side effects may be associated with decreasing risk of mortality as the dose increases from zero due to its beneficial effects but then at a threshold the mortality rate might increase due to toxic effects. Let's investigate this with the example data lookign at the 'supp' column which records the dose of supplement given to our animals. First we'll crate a simple logustic regression model with treatment and supplement...
+
+\small
+```{r}
+mod_sup1 <- glm(status01 ~ treatment + supp, family = binomial, data = dat)
+
+get_model_data(mod_sup1) %>% 
+  select(term:p.stars)
+```
+\normalsize
+
+The results suggest no significant realtionship between supplement and disease (when correctd for treratment). Howver we should look into this and check that theres not a non-linear realtionship between outsome and supplemntation. As a quick check we can use some R code to break the 'supp' column into 5 bands and caclaulte the proportion of diseased animals in each band. We use the `cut_number()` function to create the bands..
 
 
+```{r}
+# add a column with supplement bands
+dat <- dat %>% 
+  mutate(supp_cut = cut_number(supp, 5))
+
+# calculate proportion diseased in each band
+dat %>% 
+  group_by(supp_cut) %>% 
+  summarise(percent_diseased = mean(status == "diseased",
+                                    na.rm = TRUE) * 100)
+```
+
+```{r, echo = FALSE, fig.margin=TRUE, fig.width=5, fig.height=4, fig.cap = "Percentage diseased for\neach supplement band"}
+
+dat %>% 
+  group_by(supp_cut) %>% 
+  summarise(percent_diseased = mean(status == "diseased",
+                                    na.rm = TRUE) * 100) %>% 
+  ggplot() +
+  aes(x = supp_cut, y = percent_diseased) +
+  geom_col(width = 0.1) +
+  labs(x = "Supplement dose band",
+       y = "Percentage disease")
+```
+
+
+That looks suspicious. As supplement levels increase the precenatge of diseased animasl decreases then increases. This suggests putting 'supp' into the model as a simple linear term may bot be sensible. There's lots of startegies we could use including sophisticated mathematical ones called genralised additive models (GAMS) but a easy solution is to simply use the supplement bands as categories in the model rather than using the numerical value. That way we can capture different responses across the range of supplement values...
+
+
+\small
+```{r}
+mod_sup2 <- glm(status01 ~ treatment + supp_cut,
+                family = binomial,
+                data = dat)
+
+
+get_model_data(mod_sup2) %>% 
+  select(term:p.stars)
+```
+\normalsize
+
+By default the lowest supplement band `r levels(dat$supp_cut)[[1]]` is used as the reference level. We can see the odds ratios of disease in the other bands compared to the reference level. They decease as supplement increases at first then increase again. It suggests there's a 'U' shaped realtionship between odds of disease and supplement level. Certainly not a straight line.
+
+# Model selection
+
+So far we have used logistic egression models with arbitrary predictor valriables from our dataset. However in a real modelling exercise we may have lots of preditors to choose from and need to have a sensible methodology for choosing which variables to include in our models. This area of 'model slection' or 'variable selection' is complex and causes arguments amongst statisticians and epidemiologists. See Frank Harrell's book 'Regression modeling strategies' [ISBN-13: 978-3319194240] for in depth advice. This book is available as an eBook from the University of Edinbvurgh library.
 
 ```{r, echo=FALSE}
 options(opt)
